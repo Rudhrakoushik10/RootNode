@@ -1,0 +1,2485 @@
+{
+  "version": 3,
+  "sources": [
+    "../../receipt_anchor/contract.algo.ts"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAIA;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAOG;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAND;AAQE;AAAA;AAPF;AAQmC;AAAjC;AAHD;AAAA;AAMA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAVY;AAAA;;AAAA;AAYH;AAAA;AAAA;;AAAD;AAAP;AAEmB;AAfrB;AAeqB;AAAA;AACnB;AAAA;AAAA;;AAAA;;AAAA;AAdc;;AAAA;;AAAA;AAed;AAAA;;AAAA;;AAAA;AAdgB;;AAAA;;AAAA;AAewB;AAAA;AAAA;AAAA;AAAsD;AAAtD;AAAA;;AAAA;AAAqE;AAArE;AAAxC;AAAA;AAC0B;AAAoB;AAApB;AAnB5B;AAmBE;AAAA;AARD;AAAA;AAAA;AAAA;AAAA;AAAA;AAaA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAvBY;AAAA;AAAA;AAyBJ;AAAA;;AAFR;;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAKA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AA5BY;AAAA;AAAA;AA8BJ;AAAA;AAAA;;AAAP;AACO;AAAA;AAAA;AAHR;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAMA;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAE2B;AAnCZ;;AAAA;AAAA;AAmCP;AAAA;AAFR;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAOQ;AA1CT;AA0CS;AAAA;AAFR;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAKA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AA1CiB;;AAAA;AAAA;AAAA;AA4CZ;AAAA;;AAAJ;;;AACS;AAAA;AAAA;AAAA;AAHV;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAKe;AALf;;;AAUS;AAxDV;AAwDU;AAAA;AAAkB;AAvD5B;AAuD4B;AAAA;AAAnB;AAAA;AAFR;AAAA;AAAA;AAAA;AAAA;AAAA",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "@algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 0 1 2"
+    },
+    "6": {
+      "op": "bytecblock 0x151f7c75 \"receiptCount\" \"hash\" \"owner\" \"receipt\" \"service\""
+    },
+    "53": {
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "55": {
+      "op": "bz main___algots__.defaultCreate@15",
+      "stack_out": []
+    },
+    "58": {
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "60": {
+      "op": "!",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "61": {
+      "error": "OnCompletion must be NoOp",
+      "op": "assert // OnCompletion must be NoOp",
+      "stack_out": []
+    },
+    "62": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "64": {
+      "op": "assert",
+      "stack_out": []
+    },
+    "65": {
+      "op": "pushbytess 0xee1c7156 0x798ba164 0xdae4da2a 0xacf016da 0x3fb974d7 0x4d7114b6 0x4f5491cf 0xba1ba525 // method \"initialize(address)void\", method \"anchorReceipt(byte[],string)uint64\", method \"verifyReceipt(byte[])bool\", method \"getReceiptIndex(byte[])uint64\", method \"getReceiptHash(uint64)byte[]\", method \"getTotalReceipts()uint64\", method \"getServiceReceipt(string)uint64\", method \"getContractInfo()(address,uint64)\"",
+      "defined_out": [
+        "Method(anchorReceipt(byte[],string)uint64)",
+        "Method(getContractInfo()(address,uint64))",
+        "Method(getReceiptHash(uint64)byte[])",
+        "Method(getReceiptIndex(byte[])uint64)",
+        "Method(getServiceReceipt(string)uint64)",
+        "Method(getTotalReceipts()uint64)",
+        "Method(initialize(address)void)",
+        "Method(verifyReceipt(byte[])bool)"
+      ],
+      "stack_out": [
+        "Method(initialize(address)void)",
+        "Method(anchorReceipt(byte[],string)uint64)",
+        "Method(verifyReceipt(byte[])bool)",
+        "Method(getReceiptIndex(byte[])uint64)",
+        "Method(getReceiptHash(uint64)byte[])",
+        "Method(getTotalReceipts()uint64)",
+        "Method(getServiceReceipt(string)uint64)",
+        "Method(getContractInfo()(address,uint64))"
+      ]
+    },
+    "107": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(anchorReceipt(byte[],string)uint64)",
+        "Method(getContractInfo()(address,uint64))",
+        "Method(getReceiptHash(uint64)byte[])",
+        "Method(getReceiptIndex(byte[])uint64)",
+        "Method(getServiceReceipt(string)uint64)",
+        "Method(getTotalReceipts()uint64)",
+        "Method(initialize(address)void)",
+        "Method(verifyReceipt(byte[])bool)",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "Method(initialize(address)void)",
+        "Method(anchorReceipt(byte[],string)uint64)",
+        "Method(verifyReceipt(byte[])bool)",
+        "Method(getReceiptIndex(byte[])uint64)",
+        "Method(getReceiptHash(uint64)byte[])",
+        "Method(getTotalReceipts()uint64)",
+        "Method(getServiceReceipt(string)uint64)",
+        "Method(getContractInfo()(address,uint64))",
+        "tmp%6#0"
+      ]
+    },
+    "110": {
+      "op": "match initialize anchorReceipt verifyReceipt getReceiptIndex getReceiptHash getTotalReceipts getServiceReceipt getContractInfo",
+      "stack_out": []
+    },
+    "128": {
+      "op": "err"
+    },
+    "129": {
+      "block": "main___algots__.defaultCreate@15",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "131": {
+      "op": "!",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "132": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ]
+    },
+    "134": {
+      "op": "!",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0"
+      ]
+    },
+    "135": {
+      "op": "&&",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "136": {
+      "error": "OnCompletion must be NoOp && can only call when creating",
+      "op": "assert // OnCompletion must be NoOp && can only call when creating",
+      "stack_out": []
+    },
+    "137": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "138": {
+      "op": "return",
+      "stack_out": []
+    },
+    "139": {
+      "subroutine": "smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.initialize[routing]",
+      "params": {},
+      "block": "initialize",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "owner#0"
+      ],
+      "stack_out": [
+        "owner#0"
+      ]
+    },
+    "142": {
+      "op": "dup",
+      "defined_out": [
+        "owner#0",
+        "owner#0 (copy)"
+      ],
+      "stack_out": [
+        "owner#0",
+        "owner#0 (copy)"
+      ]
+    },
+    "143": {
+      "op": "len",
+      "defined_out": [
+        "len%0#0",
+        "owner#0"
+      ],
+      "stack_out": [
+        "owner#0",
+        "len%0#0"
+      ]
+    },
+    "144": {
+      "op": "pushint 32 // 32",
+      "defined_out": [
+        "32",
+        "len%0#0",
+        "owner#0"
+      ],
+      "stack_out": [
+        "owner#0",
+        "len%0#0",
+        "32"
+      ]
+    },
+    "146": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "owner#0"
+      ],
+      "stack_out": [
+        "owner#0",
+        "eq%0#0"
+      ]
+    },
+    "147": {
+      "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
+      "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
+      "stack_out": [
+        "owner#0"
+      ]
+    },
+    "148": {
+      "op": "bytec_3 // \"owner\"",
+      "defined_out": [
+        "\"owner\"",
+        "owner#0"
+      ],
+      "stack_out": [
+        "owner#0",
+        "\"owner\""
+      ]
+    },
+    "149": {
+      "op": "swap",
+      "stack_out": [
+        "\"owner\"",
+        "owner#0"
+      ]
+    },
+    "150": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "151": {
+      "op": "bytec_1 // \"receiptCount\"",
+      "defined_out": [
+        "\"receiptCount\""
+      ],
+      "stack_out": [
+        "\"receiptCount\""
+      ]
+    },
+    "152": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "\"receiptCount\"",
+        "0"
+      ],
+      "stack_out": [
+        "\"receiptCount\"",
+        "0"
+      ]
+    },
+    "153": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "154": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "155": {
+      "op": "return",
+      "stack_out": []
+    },
+    "156": {
+      "subroutine": "smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.anchorReceipt[routing]",
+      "params": {},
+      "block": "anchorReceipt",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "159": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "160": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)",
+        "0"
+      ]
+    },
+    "161": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "162": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "163": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0"
+      ]
+    },
+    "164": {
+      "op": "dig 1",
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "166": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0",
+        "len%0#0"
+      ]
+    },
+    "167": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "168": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "169": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "receiptHash#0"
+      ],
+      "stack_out": [
+        "receiptHash#0"
+      ]
+    },
+    "172": {
+      "op": "txna ApplicationArgs 2",
+      "defined_out": [
+        "receiptHash#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "tmp%2#0"
+      ]
+    },
+    "175": {
+      "op": "dup",
+      "defined_out": [
+        "receiptHash#0",
+        "tmp%2#0",
+        "tmp%2#0 (copy)"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "tmp%2#0",
+        "tmp%2#0 (copy)"
+      ]
+    },
+    "176": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "receiptHash#0",
+        "tmp%2#0",
+        "tmp%2#0 (copy)",
+        "0"
+      ]
+    },
+    "177": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%1#0",
+        "receiptHash#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "tmp%2#0",
+        "aggregate%array_length%1#0"
+      ]
+    },
+    "178": {
+      "op": "intc_2 // 2",
+      "stack_out": [
+        "receiptHash#0",
+        "tmp%2#0",
+        "aggregate%array_length%1#0",
+        "2"
+      ]
+    },
+    "179": {
+      "op": "+",
+      "defined_out": [
+        "add%1#0",
+        "receiptHash#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "tmp%2#0",
+        "add%1#0"
+      ]
+    },
+    "180": {
+      "op": "dig 1",
+      "stack_out": [
+        "receiptHash#0",
+        "tmp%2#0",
+        "add%1#0",
+        "tmp%2#0 (copy)"
+      ]
+    },
+    "182": {
+      "op": "len",
+      "defined_out": [
+        "add%1#0",
+        "len%1#0",
+        "receiptHash#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "tmp%2#0",
+        "add%1#0",
+        "len%1#0"
+      ]
+    },
+    "183": {
+      "op": "==",
+      "defined_out": [
+        "eq%1#0",
+        "receiptHash#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "tmp%2#0",
+        "eq%1#0"
+      ]
+    },
+    "184": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "receiptHash#0",
+        "tmp%2#0"
+      ]
+    },
+    "185": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "receiptHash#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0"
+      ]
+    },
+    "188": {
+      "op": "bytec_2 // \"hash\"",
+      "defined_out": [
+        "\"hash\"",
+        "receiptHash#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "\"hash\""
+      ]
+    },
+    "189": {
+      "op": "dig 2",
+      "defined_out": [
+        "\"hash\"",
+        "receiptHash#0",
+        "receiptHash#0 (copy)",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "\"hash\"",
+        "receiptHash#0 (copy)"
+      ]
+    },
+    "191": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "receiptHash#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "192": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0 (copy)",
+        "receiptHash#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0 (copy)"
+      ]
+    },
+    "193": {
+      "op": "box_len",
+      "defined_out": [
+        "_%0#0",
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0",
+        "receiptHash#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0",
+        "_%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "194": {
+      "op": "bury 1",
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "196": {
+      "op": "!",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "receiptHash#0",
+        "serviceId#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0",
+        "tmp%0#1"
+      ]
+    },
+    "197": {
+      "error": "Receipt hash already exists - immutable",
+      "op": "assert // Receipt hash already exists - immutable",
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "198": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0",
+        "0"
+      ]
+    },
+    "199": {
+      "op": "bytec_1 // \"receiptCount\"",
+      "defined_out": [
+        "\"receiptCount\"",
+        "0",
+        "box_prefixed_key%0#0",
+        "receiptHash#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0",
+        "0",
+        "\"receiptCount\""
+      ]
+    },
+    "200": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "maybe_exists%1#0",
+        "receiptHash#0",
+        "receiptIdx#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0",
+        "receiptIdx#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "201": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0",
+        "receiptIdx#0"
+      ]
+    },
+    "202": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "receiptHash#0",
+        "receiptIdx#0",
+        "receiptIdx#0 (copy)",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0",
+        "receiptIdx#0",
+        "receiptIdx#0 (copy)"
+      ]
+    },
+    "203": {
+      "op": "itob",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "encoded_value%0#0",
+        "receiptHash#0",
+        "receiptIdx#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "box_prefixed_key%0#0",
+        "receiptIdx#0",
+        "encoded_value%0#0"
+      ]
+    },
+    "204": {
+      "op": "uncover 2",
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "206": {
+      "op": "dig 1",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "encoded_value%0#0",
+        "encoded_value%0#0 (copy)",
+        "receiptHash#0",
+        "receiptIdx#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%0#0",
+        "encoded_value%0#0 (copy)"
+      ]
+    },
+    "208": {
+      "op": "box_put",
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0"
+      ]
+    },
+    "209": {
+      "op": "bytec 4 // \"receipt\"",
+      "defined_out": [
+        "\"receipt\"",
+        "encoded_value%0#0",
+        "receiptHash#0",
+        "receiptIdx#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "\"receipt\""
+      ]
+    },
+    "211": {
+      "op": "dig 1",
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "\"receipt\"",
+        "encoded_value%0#0 (copy)"
+      ]
+    },
+    "213": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%2#0",
+        "encoded_value%0#0",
+        "receiptHash#0",
+        "receiptIdx#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%2#0"
+      ]
+    },
+    "214": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%2#0",
+        "box_prefixed_key%2#0 (copy)",
+        "encoded_value%0#0",
+        "receiptHash#0",
+        "receiptIdx#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%2#0",
+        "box_prefixed_key%2#0 (copy)"
+      ]
+    },
+    "215": {
+      "op": "box_del",
+      "defined_out": [
+        "box_prefixed_key%2#0",
+        "encoded_value%0#0",
+        "receiptHash#0",
+        "receiptIdx#0",
+        "serviceId#0",
+        "{box_del}"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%2#0",
+        "{box_del}"
+      ]
+    },
+    "216": {
+      "op": "pop",
+      "stack_out": [
+        "receiptHash#0",
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%2#0"
+      ]
+    },
+    "217": {
+      "op": "uncover 4",
+      "stack_out": [
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%2#0",
+        "receiptHash#0"
+      ]
+    },
+    "219": {
+      "op": "box_put",
+      "stack_out": [
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0"
+      ]
+    },
+    "220": {
+      "op": "bytec 5 // \"service\"",
+      "defined_out": [
+        "\"service\"",
+        "encoded_value%0#0",
+        "receiptIdx#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "serviceId#0",
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "\"service\""
+      ]
+    },
+    "222": {
+      "op": "uncover 3",
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "\"service\"",
+        "serviceId#0"
+      ]
+    },
+    "224": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%3#0",
+        "encoded_value%0#0",
+        "receiptIdx#0"
+      ],
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0"
+      ]
+    },
+    "225": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%3#0",
+        "box_prefixed_key%3#0 (copy)",
+        "encoded_value%0#0",
+        "receiptIdx#0"
+      ],
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "box_prefixed_key%3#0 (copy)"
+      ]
+    },
+    "226": {
+      "op": "box_get",
+      "defined_out": [
+        "box_prefixed_key%3#0",
+        "encoded_value%0#0",
+        "maybe_exists%2#0",
+        "maybe_value%1#0",
+        "receiptIdx#0"
+      ],
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "maybe_value%1#0",
+        "maybe_exists%2#0"
+      ]
+    },
+    "227": {
+      "op": "swap",
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "maybe_exists%2#0",
+        "maybe_value%1#0"
+      ]
+    },
+    "228": {
+      "op": "btoi",
+      "defined_out": [
+        "box_prefixed_key%3#0",
+        "encoded_value%0#0",
+        "maybe_exists%2#0",
+        "maybe_value_converted%0#0",
+        "receiptIdx#0"
+      ],
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "maybe_exists%2#0",
+        "maybe_value_converted%0#0"
+      ]
+    },
+    "229": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "maybe_exists%2#0",
+        "maybe_value_converted%0#0",
+        "0"
+      ]
+    },
+    "230": {
+      "op": "swap",
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "maybe_exists%2#0",
+        "0",
+        "maybe_value_converted%0#0"
+      ]
+    },
+    "231": {
+      "op": "uncover 2",
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "0",
+        "maybe_value_converted%0#0",
+        "maybe_exists%2#0"
+      ]
+    },
+    "233": {
+      "op": "select",
+      "defined_out": [
+        "box_prefixed_key%3#0",
+        "encoded_value%0#0",
+        "receiptIdx#0",
+        "state_get%0#0"
+      ],
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "state_get%0#0"
+      ]
+    },
+    "234": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1",
+        "box_prefixed_key%3#0",
+        "encoded_value%0#0",
+        "receiptIdx#0",
+        "state_get%0#0"
+      ],
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "state_get%0#0",
+        "1"
+      ]
+    },
+    "235": {
+      "op": "+",
+      "defined_out": [
+        "box_prefixed_key%3#0",
+        "encoded_value%0#0",
+        "receiptIdx#0",
+        "tmp%1#1"
+      ],
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "tmp%1#1"
+      ]
+    },
+    "236": {
+      "op": "itob",
+      "defined_out": [
+        "box_prefixed_key%3#0",
+        "encoded_value%0#0",
+        "encoded_value%2#0",
+        "receiptIdx#0"
+      ],
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0",
+        "box_prefixed_key%3#0",
+        "encoded_value%2#0"
+      ]
+    },
+    "237": {
+      "op": "box_put",
+      "stack_out": [
+        "receiptIdx#0",
+        "encoded_value%0#0"
+      ]
+    },
+    "238": {
+      "op": "swap",
+      "stack_out": [
+        "encoded_value%0#0",
+        "receiptIdx#0"
+      ]
+    },
+    "239": {
+      "op": "intc_1 // 1",
+      "stack_out": [
+        "encoded_value%0#0",
+        "receiptIdx#0",
+        "1"
+      ]
+    },
+    "240": {
+      "op": "+",
+      "defined_out": [
+        "encoded_value%0#0",
+        "tmp%2#1"
+      ],
+      "stack_out": [
+        "encoded_value%0#0",
+        "tmp%2#1"
+      ]
+    },
+    "241": {
+      "op": "bytec_1 // \"receiptCount\"",
+      "stack_out": [
+        "encoded_value%0#0",
+        "tmp%2#1",
+        "\"receiptCount\""
+      ]
+    },
+    "242": {
+      "op": "swap",
+      "stack_out": [
+        "encoded_value%0#0",
+        "\"receiptCount\"",
+        "tmp%2#1"
+      ]
+    },
+    "243": {
+      "op": "app_global_put",
+      "stack_out": [
+        "encoded_value%0#0"
+      ]
+    },
+    "244": {
+      "op": "bytec_0 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "245": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "encoded_value%0#0"
+      ]
+    },
+    "246": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "tmp%6#0"
+      ]
+    },
+    "247": {
+      "op": "log",
+      "stack_out": []
+    },
+    "248": {
+      "op": "intc_1 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "249": {
+      "op": "return",
+      "stack_out": []
+    },
+    "250": {
+      "subroutine": "smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.verifyReceipt[routing]",
+      "params": {},
+      "block": "verifyReceipt",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "253": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "254": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)",
+        "0"
+      ]
+    },
+    "255": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "256": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "257": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0"
+      ]
+    },
+    "258": {
+      "op": "dig 1",
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "260": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0",
+        "len%0#0"
+      ]
+    },
+    "261": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "262": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "263": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "receiptHash#0"
+      ],
+      "stack_out": [
+        "receiptHash#0"
+      ]
+    },
+    "266": {
+      "op": "bytec_2 // \"hash\"",
+      "defined_out": [
+        "\"hash\"",
+        "receiptHash#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "\"hash\""
+      ]
+    },
+    "267": {
+      "op": "swap",
+      "stack_out": [
+        "\"hash\"",
+        "receiptHash#0"
+      ]
+    },
+    "268": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "269": {
+      "op": "box_len",
+      "defined_out": [
+        "_%0#0",
+        "maybe_exists%0#0"
+      ],
+      "stack_out": [
+        "_%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "270": {
+      "op": "bury 1",
+      "stack_out": [
+        "maybe_exists%0#0"
+      ]
+    },
+    "272": {
+      "op": "pushbytes 0x00",
+      "defined_out": [
+        "0x00",
+        "maybe_exists%0#0"
+      ],
+      "stack_out": [
+        "maybe_exists%0#0",
+        "0x00"
+      ]
+    },
+    "275": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "maybe_exists%0#0",
+        "0x00",
+        "0"
+      ]
+    },
+    "276": {
+      "op": "uncover 2",
+      "stack_out": [
+        "0x00",
+        "0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "278": {
+      "op": "setbit",
+      "defined_out": [
+        "aggregate%encoded_bool%0#0"
+      ],
+      "stack_out": [
+        "aggregate%encoded_bool%0#0"
+      ]
+    },
+    "279": {
+      "op": "bytec_0 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%encoded_bool%0#0"
+      ],
+      "stack_out": [
+        "aggregate%encoded_bool%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "280": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%encoded_bool%0#0"
+      ]
+    },
+    "281": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "282": {
+      "op": "log",
+      "stack_out": []
+    },
+    "283": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "284": {
+      "op": "return",
+      "stack_out": []
+    },
+    "285": {
+      "subroutine": "smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getReceiptIndex[routing]",
+      "params": {},
+      "block": "getReceiptIndex",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "288": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "289": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)",
+        "0"
+      ]
+    },
+    "290": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "291": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "292": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0"
+      ]
+    },
+    "293": {
+      "op": "dig 1",
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "295": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0",
+        "len%0#0"
+      ]
+    },
+    "296": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "297": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "298": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "receiptHash#0"
+      ],
+      "stack_out": [
+        "receiptHash#0"
+      ]
+    },
+    "301": {
+      "op": "bytec_2 // \"hash\"",
+      "defined_out": [
+        "\"hash\"",
+        "receiptHash#0"
+      ],
+      "stack_out": [
+        "receiptHash#0",
+        "\"hash\""
+      ]
+    },
+    "302": {
+      "op": "swap",
+      "stack_out": [
+        "\"hash\"",
+        "receiptHash#0"
+      ]
+    },
+    "303": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "304": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0 (copy)"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0 (copy)"
+      ]
+    },
+    "305": {
+      "op": "box_len",
+      "defined_out": [
+        "_%0#0",
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "_%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "306": {
+      "op": "bury 1",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "308": {
+      "error": "Receipt hash not found",
+      "op": "assert // Receipt hash not found",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "309": {
+      "op": "box_get",
+      "defined_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0"
+      ],
+      "stack_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0"
+      ]
+    },
+    "310": {
+      "op": "pop",
+      "stack_out": [
+        "aggregate%box_get%0#0"
+      ]
+    },
+    "311": {
+      "op": "btoi",
+      "defined_out": [
+        "maybe_value_converted%0#0"
+      ],
+      "stack_out": [
+        "maybe_value_converted%0#0"
+      ]
+    },
+    "312": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "313": {
+      "op": "bytec_0 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "314": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "315": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "316": {
+      "op": "log",
+      "stack_out": []
+    },
+    "317": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "318": {
+      "op": "return",
+      "stack_out": []
+    },
+    "319": {
+      "subroutine": "smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getReceiptHash[routing]",
+      "params": {},
+      "block": "getReceiptHash",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "322": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "323": {
+      "op": "len",
+      "defined_out": [
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0"
+      ]
+    },
+    "324": {
+      "op": "pushint 8 // 8",
+      "defined_out": [
+        "8",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0",
+        "8"
+      ]
+    },
+    "326": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "327": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "328": {
+      "op": "btoi",
+      "defined_out": [
+        "index#0"
+      ],
+      "stack_out": [
+        "index#0"
+      ]
+    },
+    "329": {
+      "op": "itob",
+      "defined_out": [
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0"
+      ]
+    },
+    "330": {
+      "op": "bytec 4 // \"receipt\"",
+      "defined_out": [
+        "\"receipt\"",
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0",
+        "\"receipt\""
+      ]
+    },
+    "332": {
+      "op": "swap",
+      "stack_out": [
+        "\"receipt\"",
+        "encoded_value%0#0"
+      ]
+    },
+    "333": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "334": {
+      "op": "box_get",
+      "defined_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0"
+      ],
+      "stack_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0"
+      ]
+    },
+    "335": {
+      "error": "Box must have value",
+      "op": "assert // Box must have value",
+      "stack_out": [
+        "aggregate%box_get%0#0"
+      ]
+    },
+    "336": {
+      "op": "dup",
+      "defined_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%0#0 (copy)"
+      ],
+      "stack_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%0#0 (copy)"
+      ]
+    },
+    "337": {
+      "op": "len",
+      "defined_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%length%0#0"
+      ],
+      "stack_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%length%0#0"
+      ]
+    },
+    "338": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%as_bytes%0#0",
+        "aggregate%box_get%0#0"
+      ],
+      "stack_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%as_bytes%0#0"
+      ]
+    },
+    "339": {
+      "op": "extract 6 2",
+      "defined_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%length_uint16%0#0"
+      ],
+      "stack_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%length_uint16%0#0"
+      ]
+    },
+    "342": {
+      "op": "swap",
+      "stack_out": [
+        "aggregate%length_uint16%0#0",
+        "aggregate%box_get%0#0"
+      ]
+    },
+    "343": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%encoded_value%0#0"
+      ],
+      "stack_out": [
+        "aggregate%encoded_value%0#0"
+      ]
+    },
+    "344": {
+      "op": "bytec_0 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%encoded_value%0#0"
+      ],
+      "stack_out": [
+        "aggregate%encoded_value%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "345": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%encoded_value%0#0"
+      ]
+    },
+    "346": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "347": {
+      "op": "log",
+      "stack_out": []
+    },
+    "348": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "349": {
+      "op": "return",
+      "stack_out": []
+    },
+    "350": {
+      "subroutine": "smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getTotalReceipts[routing]",
+      "params": {},
+      "block": "getTotalReceipts",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "351": {
+      "op": "bytec_1 // \"receiptCount\"",
+      "defined_out": [
+        "\"receiptCount\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"receiptCount\""
+      ]
+    },
+    "352": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "353": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "354": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "355": {
+      "op": "bytec_0 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "356": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "357": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "358": {
+      "op": "log",
+      "stack_out": []
+    },
+    "359": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "360": {
+      "op": "return",
+      "stack_out": []
+    },
+    "361": {
+      "subroutine": "smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getServiceReceipt[routing]",
+      "params": {},
+      "block": "getServiceReceipt",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "364": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "365": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)",
+        "0"
+      ]
+    },
+    "366": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "367": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "368": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0"
+      ]
+    },
+    "369": {
+      "op": "dig 1",
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "371": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0",
+        "len%0#0"
+      ]
+    },
+    "372": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "373": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "374": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "serviceId#0"
+      ]
+    },
+    "377": {
+      "op": "bytec 5 // \"service\"",
+      "defined_out": [
+        "\"service\"",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "serviceId#0",
+        "\"service\""
+      ]
+    },
+    "379": {
+      "op": "swap",
+      "stack_out": [
+        "\"service\"",
+        "serviceId#0"
+      ]
+    },
+    "380": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "381": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "382": {
+      "op": "box_len",
+      "defined_out": [
+        "_%0#0",
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "_%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "383": {
+      "op": "bury 1",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "385": {
+      "op": "bz getServiceReceipt_after_if_else@3",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "388": {
+      "op": "dup",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "389": {
+      "op": "box_get",
+      "defined_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0",
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0"
+      ]
+    },
+    "390": {
+      "error": "Box must have value",
+      "op": "assert // Box must have value",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "aggregate%box_get%0#0"
+      ]
+    },
+    "391": {
+      "op": "btoi",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0"
+      ]
+    },
+    "392": {
+      "block": "getServiceReceipt_after_inlined_smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getServiceReceipt@4",
+      "stack_in": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0"
+      ],
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "393": {
+      "op": "bytec_0 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "394": {
+      "op": "swap",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "395": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%4#0"
+      ]
+    },
+    "396": {
+      "op": "log",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "397": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "1"
+      ]
+    },
+    "398": {
+      "op": "return",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "399": {
+      "block": "getServiceReceipt_after_if_else@3",
+      "stack_in": [
+        "box_prefixed_key%0#0"
+      ],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0"
+      ]
+    },
+    "400": {
+      "op": "b getServiceReceipt_after_inlined_smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getServiceReceipt@4"
+    },
+    "403": {
+      "subroutine": "smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getContractInfo[routing]",
+      "params": {},
+      "block": "getContractInfo",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "404": {
+      "op": "bytec_3 // \"owner\"",
+      "defined_out": [
+        "\"owner\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"owner\""
+      ]
+    },
+    "405": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "406": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "407": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "maybe_value%0#0",
+        "0"
+      ]
+    },
+    "408": {
+      "op": "bytec_1 // \"receiptCount\"",
+      "defined_out": [
+        "\"receiptCount\"",
+        "0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "0",
+        "\"receiptCount\""
+      ]
+    },
+    "409": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%0#0",
+        "maybe_value%1#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "410": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0"
+      ]
+    },
+    "411": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "412": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%head%1#0"
+      ],
+      "stack_out": [
+        "aggregate%head%1#0"
+      ]
+    },
+    "413": {
+      "op": "bytec_0 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%head%1#0"
+      ],
+      "stack_out": [
+        "aggregate%head%1#0",
+        "0x151f7c75"
+      ]
+    },
+    "414": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%head%1#0"
+      ]
+    },
+    "415": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%1#0"
+      ],
+      "stack_out": [
+        "tmp%1#0"
+      ]
+    },
+    "416": {
+      "op": "log",
+      "stack_out": []
+    },
+    "417": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "418": {
+      "op": "return",
+      "stack_out": []
+    }
+  }
+}

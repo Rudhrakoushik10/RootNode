@@ -1,0 +1,3401 @@
+{
+  "version": 3,
+  "sources": [
+    "../../escrow/contract.algo.ts"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AASA;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAUG;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AATD;AAWE;;AAAA;AAVF;AAWE;;AAAA;AARF;;;;;;;;;;;AASE;;AAAA;AAXF;AAYE;;AAAA;AAXF;AAYsB;AAApB;AATF;;AAUwB;;AAAtB;AATF;;AAUE;AAAA;AAZF;;AAa6B;;AAA3B;AATD;AAAA;AAYA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAEQ;;AAAe;AAvBxB;AAuBwB;AAAA;AAAf;AAAP;AACO;AArBT;AAqBS;AAAA;AAAA;AAAP;AAEE;AAAA;;AAAqB;;AAArB;AADF;AAKE;;AAAmB;AA5BvB;AA4BuB;AAAA;AAAnB;AADF;AARD;AAAA;AAcA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAEQ;;AAAe;AApCxB;AAoCwB;AAAA;AAAf;AAAP;AACO;AAnCT;AAmCS;AAAA;AAAA;AAAP;AAjCF;;AAkCE;AAAA;AApCF;AAqCsB;AAApB;AALD;AAAA;AAUQ;;AAAe;AA7CxB;AA6CwB;AAAA;AAAf;AAAP;AACO;AA3CT;AA2CS;AAAA;AAAsB;AAAtB;AAAP;AAEA;AACY;AAhDd;AAgDc;AAAA;AACF;AAhDZ;AAgDY;AAAA;;;;;AAFV;;;AAGc;;;AAHd;AA7CF;AAmDsB;AAApB;AAXD;AAAA;AAcA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAEQ;;AAAe;AA1DxB;AA0DwB;AAAA;AAAf;AAAA;;;AAAsC;;AAAe;AA3D9D;AA2D8D;AAAA;AAAf;AAAtC;;;;AAAP;AACO;AAzDT;AAyDS;AAAA;AAAA;AAAP;AAEA;AACY;AA/Dd;AA+Dc;AAAA;AACF;AA9DZ;AA8DY;AAAA;;;;;AAFV;;;AAGc;;;AAHd;AA3DF;AAiEsB;AAApB;AAXD;AAAA;;;;;AAgBQ;;AAAyB;AAnElC;;AAmEkC;AAAA;AAAsB;AAlExD;;AAkEwD;AAAA;AAAtB;AAAzB;AAAP;AACO;AAvET;AAuES;AAAA;AAAA;AAAP;AAEA;AACY;AA7Ed;AA6Ec;AAAA;AACF;AA5EZ;AA4EY;AAAA;;;;;AAFV;;;AAGc;;;AAHd;AAzEF;AA+EsB;;AAApB;AAXD;AAAA;AAiBG;AAxFJ;AAwFI;AAAA;AACA;AAxFJ;AAwFI;AAAA;AACA;AAxFJ;AAwFI;AAAA;AACA;AAxFJ;AAwFI;AAAA;AAJK;;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAFR;;AAAA;AAAA;AAAA;AAAA;AAAA;AAYQ;AA9FT;AA8FS;AAAA;AAFR;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAKA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAEQ;;AAAe;AAtGxB;AAsGwB;AAAA;AAAf;AAAA;;;AAAmC;;AAAe;AArG3D;AAqG2D;AAAA;AAAf;AAAnC;;;;AAAP;AAnGF;AAoGE;;AAAA;AAHD;AAAA;;",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "@algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 0 1 2 8"
+    },
+    "7": {
+      "op": "bytecblock \"status\" \"agent\" \"provider\" \"amountLocked\" \"lockTime\" \"timeout\" \"serviceResult\" 0x151f7c75"
+    },
+    "80": {
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "82": {
+      "op": "bz main___algots__.defaultCreate@16",
+      "stack_out": []
+    },
+    "85": {
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "87": {
+      "op": "!",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "88": {
+      "error": "OnCompletion must be NoOp",
+      "op": "assert // OnCompletion must be NoOp",
+      "stack_out": []
+    },
+    "89": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "91": {
+      "op": "assert",
+      "stack_out": []
+    },
+    "92": {
+      "op": "pushbytess 0xe7f72174 0x4c9d2ea7 0x7fef3fb7 0x5b7201d5 0x547a2b7f 0x8d0cf25c 0xb2ef0d4d 0x992ac3be 0x79fdc773 // method \"initialize(address,address,string,uint64,uint64)void\", method \"lockFunds(pay)void\", method \"confirmService(byte[])void\", method \"releaseFunds()void\", method \"rejectAndRefund(string)void\", method \"expireAndRefund()void\", method \"getEscrowInfo()(address,address,uint64,uint64)\", method \"getStatus()uint64\", method \"updateStatus(uint64)void\"",
+      "defined_out": [
+        "Method(confirmService(byte[])void)",
+        "Method(expireAndRefund()void)",
+        "Method(getEscrowInfo()(address,address,uint64,uint64))",
+        "Method(getStatus()uint64)",
+        "Method(initialize(address,address,string,uint64,uint64)void)",
+        "Method(lockFunds(pay)void)",
+        "Method(rejectAndRefund(string)void)",
+        "Method(releaseFunds()void)",
+        "Method(updateStatus(uint64)void)"
+      ],
+      "stack_out": [
+        "Method(initialize(address,address,string,uint64,uint64)void)",
+        "Method(lockFunds(pay)void)",
+        "Method(confirmService(byte[])void)",
+        "Method(releaseFunds()void)",
+        "Method(rejectAndRefund(string)void)",
+        "Method(expireAndRefund()void)",
+        "Method(getEscrowInfo()(address,address,uint64,uint64))",
+        "Method(getStatus()uint64)",
+        "Method(updateStatus(uint64)void)"
+      ]
+    },
+    "139": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(confirmService(byte[])void)",
+        "Method(expireAndRefund()void)",
+        "Method(getEscrowInfo()(address,address,uint64,uint64))",
+        "Method(getStatus()uint64)",
+        "Method(initialize(address,address,string,uint64,uint64)void)",
+        "Method(lockFunds(pay)void)",
+        "Method(rejectAndRefund(string)void)",
+        "Method(releaseFunds()void)",
+        "Method(updateStatus(uint64)void)",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "Method(initialize(address,address,string,uint64,uint64)void)",
+        "Method(lockFunds(pay)void)",
+        "Method(confirmService(byte[])void)",
+        "Method(releaseFunds()void)",
+        "Method(rejectAndRefund(string)void)",
+        "Method(expireAndRefund()void)",
+        "Method(getEscrowInfo()(address,address,uint64,uint64))",
+        "Method(getStatus()uint64)",
+        "Method(updateStatus(uint64)void)",
+        "tmp%6#0"
+      ]
+    },
+    "142": {
+      "op": "match initialize lockFunds confirmService releaseFunds rejectAndRefund expireAndRefund getEscrowInfo getStatus updateStatus",
+      "stack_out": []
+    },
+    "162": {
+      "op": "err"
+    },
+    "163": {
+      "block": "main___algots__.defaultCreate@16",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "165": {
+      "op": "!",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "166": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ]
+    },
+    "168": {
+      "op": "!",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0"
+      ]
+    },
+    "169": {
+      "op": "&&",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "170": {
+      "error": "OnCompletion must be NoOp && can only call when creating",
+      "op": "assert // OnCompletion must be NoOp && can only call when creating",
+      "stack_out": []
+    },
+    "171": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "172": {
+      "op": "return",
+      "stack_out": []
+    },
+    "173": {
+      "subroutine": "smart_contracts/escrow/contract.algo.ts::EscrowContract.initialize[routing]",
+      "params": {},
+      "block": "initialize",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "agent#0"
+      ],
+      "stack_out": [
+        "agent#0"
+      ]
+    },
+    "176": {
+      "op": "dup",
+      "defined_out": [
+        "agent#0",
+        "agent#0 (copy)"
+      ],
+      "stack_out": [
+        "agent#0",
+        "agent#0 (copy)"
+      ]
+    },
+    "177": {
+      "op": "len",
+      "defined_out": [
+        "agent#0",
+        "len%0#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "len%0#0"
+      ]
+    },
+    "178": {
+      "op": "pushint 32 // 32",
+      "defined_out": [
+        "32",
+        "agent#0",
+        "len%0#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "len%0#0",
+        "32"
+      ]
+    },
+    "180": {
+      "op": "==",
+      "defined_out": [
+        "agent#0",
+        "eq%0#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "eq%0#0"
+      ]
+    },
+    "181": {
+      "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
+      "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
+      "stack_out": [
+        "agent#0"
+      ]
+    },
+    "182": {
+      "op": "txna ApplicationArgs 2",
+      "defined_out": [
+        "agent#0",
+        "provider#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0"
+      ]
+    },
+    "185": {
+      "op": "dup",
+      "defined_out": [
+        "agent#0",
+        "provider#0",
+        "provider#0 (copy)"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "provider#0 (copy)"
+      ]
+    },
+    "186": {
+      "op": "len",
+      "defined_out": [
+        "agent#0",
+        "len%1#0",
+        "provider#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "len%1#0"
+      ]
+    },
+    "187": {
+      "op": "pushint 32 // 32",
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "len%1#0",
+        "32"
+      ]
+    },
+    "189": {
+      "op": "==",
+      "defined_out": [
+        "agent#0",
+        "eq%1#0",
+        "provider#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "eq%1#0"
+      ]
+    },
+    "190": {
+      "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
+      "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
+      "stack_out": [
+        "agent#0",
+        "provider#0"
+      ]
+    },
+    "191": {
+      "op": "txna ApplicationArgs 3",
+      "defined_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0"
+      ]
+    },
+    "194": {
+      "op": "dup",
+      "defined_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0",
+        "tmp%4#0 (copy)"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0",
+        "tmp%4#0 (copy)"
+      ]
+    },
+    "195": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "agent#0",
+        "provider#0",
+        "tmp%4#0",
+        "tmp%4#0 (copy)"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0",
+        "tmp%4#0 (copy)",
+        "0"
+      ]
+    },
+    "196": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "agent#0",
+        "aggregate%array_length%0#0",
+        "provider#0",
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "197": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "agent#0",
+        "aggregate%array_length%0#0",
+        "provider#0",
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "198": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "agent#0",
+        "provider#0",
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0",
+        "add%0#0"
+      ]
+    },
+    "199": {
+      "op": "dig 1",
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0",
+        "add%0#0",
+        "tmp%4#0 (copy)"
+      ]
+    },
+    "201": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "agent#0",
+        "len%2#0",
+        "provider#0",
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0",
+        "add%0#0",
+        "len%2#0"
+      ]
+    },
+    "202": {
+      "op": "==",
+      "defined_out": [
+        "agent#0",
+        "eq%2#0",
+        "provider#0",
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0",
+        "eq%2#0"
+      ]
+    },
+    "203": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "tmp%4#0"
+      ]
+    },
+    "204": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0"
+      ]
+    },
+    "207": {
+      "op": "txna ApplicationArgs 4",
+      "defined_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0"
+      ]
+    },
+    "210": {
+      "op": "dup",
+      "defined_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0",
+        "tmp%6#0 (copy)"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0",
+        "tmp%6#0 (copy)"
+      ]
+    },
+    "211": {
+      "op": "len",
+      "defined_out": [
+        "agent#0",
+        "len%3#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0",
+        "len%3#0"
+      ]
+    },
+    "212": {
+      "op": "intc_3 // 8",
+      "defined_out": [
+        "8",
+        "agent#0",
+        "len%3#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0",
+        "len%3#0",
+        "8"
+      ]
+    },
+    "213": {
+      "op": "==",
+      "defined_out": [
+        "agent#0",
+        "eq%3#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0",
+        "eq%3#0"
+      ]
+    },
+    "214": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%6#0"
+      ]
+    },
+    "215": {
+      "op": "btoi",
+      "defined_out": [
+        "agent#0",
+        "amount#0",
+        "provider#0",
+        "serviceId#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "amount#0"
+      ]
+    },
+    "216": {
+      "op": "txna ApplicationArgs 5",
+      "defined_out": [
+        "agent#0",
+        "amount#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "tmp%8#0"
+      ]
+    },
+    "219": {
+      "op": "dup",
+      "defined_out": [
+        "agent#0",
+        "amount#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%8#0",
+        "tmp%8#0 (copy)"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "tmp%8#0",
+        "tmp%8#0 (copy)"
+      ]
+    },
+    "220": {
+      "op": "len",
+      "defined_out": [
+        "agent#0",
+        "amount#0",
+        "len%4#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "tmp%8#0",
+        "len%4#0"
+      ]
+    },
+    "221": {
+      "op": "intc_3 // 8",
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "tmp%8#0",
+        "len%4#0",
+        "8"
+      ]
+    },
+    "222": {
+      "op": "==",
+      "defined_out": [
+        "agent#0",
+        "amount#0",
+        "eq%4#0",
+        "provider#0",
+        "serviceId#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "tmp%8#0",
+        "eq%4#0"
+      ]
+    },
+    "223": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "tmp%8#0"
+      ]
+    },
+    "224": {
+      "op": "btoi",
+      "defined_out": [
+        "agent#0",
+        "amount#0",
+        "provider#0",
+        "serviceId#0",
+        "timeoutSecs#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "timeoutSecs#0"
+      ]
+    },
+    "225": {
+      "op": "bytec_1 // \"agent\"",
+      "defined_out": [
+        "\"agent\"",
+        "agent#0",
+        "amount#0",
+        "provider#0",
+        "serviceId#0",
+        "timeoutSecs#0"
+      ],
+      "stack_out": [
+        "agent#0",
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "timeoutSecs#0",
+        "\"agent\""
+      ]
+    },
+    "226": {
+      "op": "uncover 5",
+      "stack_out": [
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "timeoutSecs#0",
+        "\"agent\"",
+        "agent#0"
+      ]
+    },
+    "228": {
+      "op": "app_global_put",
+      "stack_out": [
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "timeoutSecs#0"
+      ]
+    },
+    "229": {
+      "op": "bytec_2 // \"provider\"",
+      "defined_out": [
+        "\"provider\"",
+        "amount#0",
+        "provider#0",
+        "serviceId#0",
+        "timeoutSecs#0"
+      ],
+      "stack_out": [
+        "provider#0",
+        "serviceId#0",
+        "amount#0",
+        "timeoutSecs#0",
+        "\"provider\""
+      ]
+    },
+    "230": {
+      "op": "uncover 4",
+      "stack_out": [
+        "serviceId#0",
+        "amount#0",
+        "timeoutSecs#0",
+        "\"provider\"",
+        "provider#0"
+      ]
+    },
+    "232": {
+      "op": "app_global_put",
+      "stack_out": [
+        "serviceId#0",
+        "amount#0",
+        "timeoutSecs#0"
+      ]
+    },
+    "233": {
+      "op": "pushbytes \"serviceId\"",
+      "defined_out": [
+        "\"serviceId\"",
+        "amount#0",
+        "serviceId#0",
+        "timeoutSecs#0"
+      ],
+      "stack_out": [
+        "serviceId#0",
+        "amount#0",
+        "timeoutSecs#0",
+        "\"serviceId\""
+      ]
+    },
+    "244": {
+      "op": "uncover 3",
+      "stack_out": [
+        "amount#0",
+        "timeoutSecs#0",
+        "\"serviceId\"",
+        "serviceId#0"
+      ]
+    },
+    "246": {
+      "op": "app_global_put",
+      "stack_out": [
+        "amount#0",
+        "timeoutSecs#0"
+      ]
+    },
+    "247": {
+      "op": "bytec_3 // \"amountLocked\"",
+      "defined_out": [
+        "\"amountLocked\"",
+        "amount#0",
+        "timeoutSecs#0"
+      ],
+      "stack_out": [
+        "amount#0",
+        "timeoutSecs#0",
+        "\"amountLocked\""
+      ]
+    },
+    "248": {
+      "op": "uncover 2",
+      "stack_out": [
+        "timeoutSecs#0",
+        "\"amountLocked\"",
+        "amount#0"
+      ]
+    },
+    "250": {
+      "op": "app_global_put",
+      "stack_out": [
+        "timeoutSecs#0"
+      ]
+    },
+    "251": {
+      "op": "bytec_0 // \"status\"",
+      "defined_out": [
+        "\"status\"",
+        "timeoutSecs#0"
+      ],
+      "stack_out": [
+        "timeoutSecs#0",
+        "\"status\""
+      ]
+    },
+    "252": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "timeoutSecs#0",
+        "\"status\"",
+        "0"
+      ]
+    },
+    "253": {
+      "op": "app_global_put",
+      "stack_out": [
+        "timeoutSecs#0"
+      ]
+    },
+    "254": {
+      "op": "bytec 4 // \"lockTime\"",
+      "defined_out": [
+        "\"lockTime\"",
+        "timeoutSecs#0"
+      ],
+      "stack_out": [
+        "timeoutSecs#0",
+        "\"lockTime\""
+      ]
+    },
+    "256": {
+      "op": "global LatestTimestamp",
+      "defined_out": [
+        "\"lockTime\"",
+        "timeoutSecs#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "timeoutSecs#0",
+        "\"lockTime\"",
+        "tmp%0#1"
+      ]
+    },
+    "258": {
+      "op": "app_global_put",
+      "stack_out": [
+        "timeoutSecs#0"
+      ]
+    },
+    "259": {
+      "op": "bytec 5 // \"timeout\"",
+      "defined_out": [
+        "\"timeout\"",
+        "timeoutSecs#0"
+      ],
+      "stack_out": [
+        "timeoutSecs#0",
+        "\"timeout\""
+      ]
+    },
+    "261": {
+      "op": "swap",
+      "stack_out": [
+        "\"timeout\"",
+        "timeoutSecs#0"
+      ]
+    },
+    "262": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "263": {
+      "op": "bytec 6 // \"serviceResult\"",
+      "defined_out": [
+        "\"serviceResult\""
+      ],
+      "stack_out": [
+        "\"serviceResult\""
+      ]
+    },
+    "265": {
+      "op": "global ZeroAddress",
+      "defined_out": [
+        "\"serviceResult\"",
+        "reinterpret_bytes[32]%0#0"
+      ],
+      "stack_out": [
+        "\"serviceResult\"",
+        "reinterpret_bytes[32]%0#0"
+      ]
+    },
+    "267": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "268": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "269": {
+      "op": "return",
+      "stack_out": []
+    },
+    "270": {
+      "subroutine": "smart_contracts/escrow/contract.algo.ts::EscrowContract.lockFunds[routing]",
+      "params": {},
+      "block": "lockFunds",
+      "stack_in": [],
+      "op": "txn GroupIndex",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "272": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "1"
+      ]
+    },
+    "273": {
+      "op": "-",
+      "defined_out": [
+        "payment#0"
+      ],
+      "stack_out": [
+        "payment#0"
+      ]
+    },
+    "274": {
+      "op": "dup",
+      "defined_out": [
+        "payment#0",
+        "payment#0 (copy)"
+      ],
+      "stack_out": [
+        "payment#0",
+        "payment#0 (copy)"
+      ]
+    },
+    "275": {
+      "op": "gtxns TypeEnum",
+      "defined_out": [
+        "gtxn_type%0#0",
+        "payment#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "gtxn_type%0#0"
+      ]
+    },
+    "277": {
+      "op": "intc_1 // pay",
+      "defined_out": [
+        "gtxn_type%0#0",
+        "pay",
+        "payment#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "gtxn_type%0#0",
+        "pay"
+      ]
+    },
+    "278": {
+      "op": "==",
+      "defined_out": [
+        "gtxn_type_matches%0#0",
+        "payment#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "gtxn_type_matches%0#0"
+      ]
+    },
+    "279": {
+      "error": "transaction type is pay",
+      "op": "assert // transaction type is pay",
+      "stack_out": [
+        "payment#0"
+      ]
+    },
+    "280": {
+      "op": "txn Sender",
+      "defined_out": [
+        "payment#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "payment#0",
+        "tmp%0#1"
+      ]
+    },
+    "282": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "payment#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "payment#0",
+        "tmp%0#1",
+        "0"
+      ]
+    },
+    "283": {
+      "op": "bytec_1 // \"agent\"",
+      "defined_out": [
+        "\"agent\"",
+        "0",
+        "payment#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "payment#0",
+        "tmp%0#1",
+        "0",
+        "\"agent\""
+      ]
+    },
+    "284": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0",
+        "payment#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "payment#0",
+        "tmp%0#1",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "285": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "payment#0",
+        "tmp%0#1",
+        "maybe_value%0#0"
+      ]
+    },
+    "286": {
+      "op": "==",
+      "defined_out": [
+        "payment#0",
+        "tmp%1#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "tmp%1#0"
+      ]
+    },
+    "287": {
+      "error": "Only agent can lock funds",
+      "op": "assert // Only agent can lock funds",
+      "stack_out": [
+        "payment#0"
+      ]
+    },
+    "288": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "payment#0",
+        "0"
+      ]
+    },
+    "289": {
+      "op": "bytec_0 // \"status\"",
+      "defined_out": [
+        "\"status\"",
+        "0",
+        "payment#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "0",
+        "\"status\""
+      ]
+    },
+    "290": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%1#0",
+        "payment#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "291": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "payment#0",
+        "maybe_value%1#0"
+      ]
+    },
+    "292": {
+      "op": "!",
+      "defined_out": [
+        "payment#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "tmp%2#0"
+      ]
+    },
+    "293": {
+      "error": "Escrow not in pending state",
+      "op": "assert // Escrow not in pending state",
+      "stack_out": [
+        "payment#0"
+      ]
+    },
+    "294": {
+      "op": "dup",
+      "stack_out": [
+        "payment#0",
+        "payment#0 (copy)"
+      ]
+    },
+    "295": {
+      "op": "gtxns Receiver",
+      "defined_out": [
+        "payment#0",
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "tmp%3#0"
+      ]
+    },
+    "297": {
+      "op": "global CurrentApplicationAddress",
+      "defined_out": [
+        "payment#0",
+        "tmp%3#0",
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "tmp%3#0",
+        "tmp%4#0"
+      ]
+    },
+    "299": {
+      "op": "==",
+      "defined_out": [
+        "payment#0",
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "payment#0",
+        "tmp%5#0"
+      ]
+    },
+    "300": {
+      "error": "Payment must go to escrow",
+      "op": "assert // Payment must go to escrow",
+      "stack_out": [
+        "payment#0"
+      ]
+    },
+    "301": {
+      "op": "gtxns Amount",
+      "defined_out": [
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "tmp%6#0"
+      ]
+    },
+    "303": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "tmp%6#0",
+        "0"
+      ]
+    },
+    "304": {
+      "op": "bytec_3 // \"amountLocked\"",
+      "defined_out": [
+        "\"amountLocked\"",
+        "0",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "tmp%6#0",
+        "0",
+        "\"amountLocked\""
+      ]
+    },
+    "305": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%2#0",
+        "maybe_value%2#0",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "tmp%6#0",
+        "maybe_value%2#0",
+        "maybe_exists%2#0"
+      ]
+    },
+    "306": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "tmp%6#0",
+        "maybe_value%2#0"
+      ]
+    },
+    "307": {
+      "op": "==",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "308": {
+      "error": "Payment amount must match locked amount",
+      "op": "assert // Payment amount must match locked amount",
+      "stack_out": []
+    },
+    "309": {
+      "op": "intc_1 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "310": {
+      "op": "return",
+      "stack_out": []
+    },
+    "311": {
+      "subroutine": "smart_contracts/escrow/contract.algo.ts::EscrowContract.confirmService[routing]",
+      "params": {},
+      "block": "confirmService",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "314": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "315": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)",
+        "0"
+      ]
+    },
+    "316": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "317": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "318": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0"
+      ]
+    },
+    "319": {
+      "op": "dig 1",
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "321": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0",
+        "len%0#0"
+      ]
+    },
+    "322": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "323": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "324": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "serviceResult#0"
+      ],
+      "stack_out": [
+        "serviceResult#0"
+      ]
+    },
+    "327": {
+      "op": "txn Sender",
+      "defined_out": [
+        "serviceResult#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "serviceResult#0",
+        "tmp%0#1"
+      ]
+    },
+    "329": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "serviceResult#0",
+        "tmp%0#1",
+        "0"
+      ]
+    },
+    "330": {
+      "op": "bytec_2 // \"provider\"",
+      "defined_out": [
+        "\"provider\"",
+        "0",
+        "serviceResult#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "serviceResult#0",
+        "tmp%0#1",
+        "0",
+        "\"provider\""
+      ]
+    },
+    "331": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0",
+        "serviceResult#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "serviceResult#0",
+        "tmp%0#1",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "332": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "serviceResult#0",
+        "tmp%0#1",
+        "maybe_value%0#0"
+      ]
+    },
+    "333": {
+      "op": "==",
+      "defined_out": [
+        "serviceResult#0",
+        "tmp%1#1"
+      ],
+      "stack_out": [
+        "serviceResult#0",
+        "tmp%1#1"
+      ]
+    },
+    "334": {
+      "error": "Only provider can confirm",
+      "op": "assert // Only provider can confirm",
+      "stack_out": [
+        "serviceResult#0"
+      ]
+    },
+    "335": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "serviceResult#0",
+        "0"
+      ]
+    },
+    "336": {
+      "op": "bytec_0 // \"status\"",
+      "defined_out": [
+        "\"status\"",
+        "0",
+        "serviceResult#0"
+      ],
+      "stack_out": [
+        "serviceResult#0",
+        "0",
+        "\"status\""
+      ]
+    },
+    "337": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%1#0",
+        "serviceResult#0"
+      ],
+      "stack_out": [
+        "serviceResult#0",
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "338": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "serviceResult#0",
+        "maybe_value%1#0"
+      ]
+    },
+    "339": {
+      "op": "!",
+      "defined_out": [
+        "serviceResult#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "serviceResult#0",
+        "tmp%2#0"
+      ]
+    },
+    "340": {
+      "error": "Escrow not in pending state",
+      "op": "assert // Escrow not in pending state",
+      "stack_out": [
+        "serviceResult#0"
+      ]
+    },
+    "341": {
+      "op": "bytec 6 // \"serviceResult\"",
+      "defined_out": [
+        "\"serviceResult\"",
+        "serviceResult#0"
+      ],
+      "stack_out": [
+        "serviceResult#0",
+        "\"serviceResult\""
+      ]
+    },
+    "343": {
+      "op": "swap",
+      "stack_out": [
+        "\"serviceResult\"",
+        "serviceResult#0"
+      ]
+    },
+    "344": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "345": {
+      "op": "bytec_0 // \"status\"",
+      "stack_out": [
+        "\"status\""
+      ]
+    },
+    "346": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "\"status\"",
+        "1"
+      ],
+      "stack_out": [
+        "\"status\"",
+        "1"
+      ]
+    },
+    "347": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "348": {
+      "op": "intc_1 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "349": {
+      "op": "return",
+      "stack_out": []
+    },
+    "350": {
+      "subroutine": "smart_contracts/escrow/contract.algo.ts::EscrowContract.releaseFunds[routing]",
+      "params": {},
+      "block": "releaseFunds",
+      "stack_in": [],
+      "op": "txn Sender",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "352": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "0"
+      ]
+    },
+    "353": {
+      "op": "bytec_1 // \"agent\"",
+      "defined_out": [
+        "\"agent\"",
+        "0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "0",
+        "\"agent\""
+      ]
+    },
+    "354": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "355": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "tmp%0#0",
+        "maybe_value%0#0"
+      ]
+    },
+    "356": {
+      "op": "==",
+      "defined_out": [
+        "tmp%1#0"
+      ],
+      "stack_out": [
+        "tmp%1#0"
+      ]
+    },
+    "357": {
+      "error": "Only agent can release",
+      "op": "assert // Only agent can release",
+      "stack_out": []
+    },
+    "358": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "359": {
+      "op": "bytec_0 // \"status\"",
+      "defined_out": [
+        "\"status\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"status\""
+      ]
+    },
+    "360": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%1#0"
+      ],
+      "stack_out": [
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "361": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%1#0"
+      ]
+    },
+    "362": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1",
+        "maybe_value%1#0"
+      ],
+      "stack_out": [
+        "maybe_value%1#0",
+        "1"
+      ]
+    },
+    "363": {
+      "op": "==",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "364": {
+      "error": "Service not confirmed",
+      "op": "assert // Service not confirmed",
+      "stack_out": []
+    },
+    "365": {
+      "op": "itxn_begin"
+    },
+    "366": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "367": {
+      "op": "bytec_2 // \"provider\"",
+      "defined_out": [
+        "\"provider\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"provider\""
+      ]
+    },
+    "368": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%2#0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "maybe_value%2#0",
+        "maybe_exists%2#0"
+      ]
+    },
+    "369": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%2#0"
+      ]
+    },
+    "370": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "maybe_value%2#0",
+        "0"
+      ]
+    },
+    "371": {
+      "op": "bytec_3 // \"amountLocked\"",
+      "defined_out": [
+        "\"amountLocked\"",
+        "0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "maybe_value%2#0",
+        "0",
+        "\"amountLocked\""
+      ]
+    },
+    "372": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%3#0",
+        "maybe_value%2#0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "maybe_value%2#0",
+        "maybe_value%3#0",
+        "maybe_exists%3#0"
+      ]
+    },
+    "373": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%2#0",
+        "maybe_value%3#0"
+      ]
+    },
+    "374": {
+      "op": "itxn_field Amount",
+      "stack_out": [
+        "maybe_value%2#0"
+      ]
+    },
+    "376": {
+      "op": "itxn_field Receiver",
+      "stack_out": []
+    },
+    "378": {
+      "op": "intc_1 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "379": {
+      "op": "itxn_field TypeEnum",
+      "stack_out": []
+    },
+    "381": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "382": {
+      "op": "itxn_field Fee",
+      "stack_out": []
+    },
+    "384": {
+      "op": "itxn_submit"
+    },
+    "385": {
+      "op": "bytec_0 // \"status\"",
+      "stack_out": [
+        "\"status\""
+      ]
+    },
+    "386": {
+      "op": "intc_1 // 1",
+      "stack_out": [
+        "\"status\"",
+        "1"
+      ]
+    },
+    "387": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "388": {
+      "op": "intc_1 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "389": {
+      "op": "return",
+      "stack_out": []
+    },
+    "390": {
+      "subroutine": "smart_contracts/escrow/contract.algo.ts::EscrowContract.rejectAndRefund[routing]",
+      "params": {},
+      "block": "rejectAndRefund",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "393": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "394": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)",
+        "0"
+      ]
+    },
+    "395": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "396": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "aggregate%array_length%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "397": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "add%0#0"
+      ]
+    },
+    "398": {
+      "op": "swap",
+      "stack_out": [
+        "add%0#0",
+        "tmp%0#0"
+      ]
+    },
+    "399": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0"
+      ],
+      "stack_out": [
+        "add%0#0",
+        "len%0#0"
+      ]
+    },
+    "400": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0"
+      ],
+      "stack_out": [
+        "eq%0#0"
+      ]
+    },
+    "401": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": []
+    },
+    "402": {
+      "op": "txn Sender",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "404": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "tmp%0#1",
+        "0"
+      ]
+    },
+    "405": {
+      "op": "bytec_2 // \"provider\"",
+      "defined_out": [
+        "\"provider\"",
+        "0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1",
+        "0",
+        "\"provider\""
+      ]
+    },
+    "406": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "407": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "tmp%0#1",
+        "maybe_value%0#0"
+      ]
+    },
+    "408": {
+      "op": "==",
+      "defined_out": [
+        "tmp%1#1"
+      ],
+      "stack_out": [
+        "tmp%1#1"
+      ]
+    },
+    "409": {
+      "op": "bnz rejectAndRefund_bool_true@3",
+      "stack_out": []
+    },
+    "412": {
+      "op": "txn Sender",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "414": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "tmp%2#0",
+        "0"
+      ]
+    },
+    "415": {
+      "op": "bytec_1 // \"agent\"",
+      "defined_out": [
+        "\"agent\"",
+        "0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0",
+        "0",
+        "\"agent\""
+      ]
+    },
+    "416": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%1#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0",
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "417": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "tmp%2#0",
+        "maybe_value%1#0"
+      ]
+    },
+    "418": {
+      "op": "==",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "419": {
+      "op": "bz rejectAndRefund_bool_false@4",
+      "stack_out": []
+    },
+    "422": {
+      "block": "rejectAndRefund_bool_true@3",
+      "stack_in": [],
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "or_result%0#0"
+      ],
+      "stack_out": [
+        "or_result%0#0"
+      ]
+    },
+    "423": {
+      "error": "Only provider or agent",
+      "block": "rejectAndRefund_bool_merge@5",
+      "stack_in": [
+        "or_result%0#0"
+      ],
+      "op": "assert // Only provider or agent",
+      "defined_out": [],
+      "stack_out": []
+    },
+    "424": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "425": {
+      "op": "bytec_0 // \"status\"",
+      "defined_out": [
+        "\"status\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"status\""
+      ]
+    },
+    "426": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%2#0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "maybe_value%2#0",
+        "maybe_exists%2#0"
+      ]
+    },
+    "427": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%2#0"
+      ]
+    },
+    "428": {
+      "op": "!",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "429": {
+      "error": "Escrow not in pending state",
+      "op": "assert // Escrow not in pending state",
+      "stack_out": []
+    },
+    "430": {
+      "op": "itxn_begin"
+    },
+    "431": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "432": {
+      "op": "bytec_1 // \"agent\"",
+      "defined_out": [
+        "\"agent\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"agent\""
+      ]
+    },
+    "433": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%3#0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "maybe_value%3#0",
+        "maybe_exists%3#0"
+      ]
+    },
+    "434": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%3#0"
+      ]
+    },
+    "435": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "maybe_value%3#0",
+        "0"
+      ]
+    },
+    "436": {
+      "op": "bytec_3 // \"amountLocked\"",
+      "defined_out": [
+        "\"amountLocked\"",
+        "0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "maybe_value%3#0",
+        "0",
+        "\"amountLocked\""
+      ]
+    },
+    "437": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%4#0",
+        "maybe_value%3#0",
+        "maybe_value%4#0"
+      ],
+      "stack_out": [
+        "maybe_value%3#0",
+        "maybe_value%4#0",
+        "maybe_exists%4#0"
+      ]
+    },
+    "438": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%3#0",
+        "maybe_value%4#0"
+      ]
+    },
+    "439": {
+      "op": "itxn_field Amount",
+      "stack_out": [
+        "maybe_value%3#0"
+      ]
+    },
+    "441": {
+      "op": "itxn_field Receiver",
+      "stack_out": []
+    },
+    "443": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "444": {
+      "op": "itxn_field TypeEnum",
+      "stack_out": []
+    },
+    "446": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "447": {
+      "op": "itxn_field Fee",
+      "stack_out": []
+    },
+    "449": {
+      "op": "itxn_submit"
+    },
+    "450": {
+      "op": "bytec_0 // \"status\"",
+      "stack_out": [
+        "\"status\""
+      ]
+    },
+    "451": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "\"status\"",
+        "2"
+      ],
+      "stack_out": [
+        "\"status\"",
+        "2"
+      ]
+    },
+    "452": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "453": {
+      "op": "intc_1 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "454": {
+      "op": "return",
+      "stack_out": []
+    },
+    "455": {
+      "block": "rejectAndRefund_bool_false@4",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "or_result%0#0"
+      ],
+      "stack_out": [
+        "or_result%0#0"
+      ]
+    },
+    "456": {
+      "op": "b rejectAndRefund_bool_merge@5"
+    },
+    "459": {
+      "subroutine": "smart_contracts/escrow/contract.algo.ts::EscrowContract.expireAndRefund[routing]",
+      "params": {},
+      "block": "expireAndRefund",
+      "stack_in": [],
+      "op": "global LatestTimestamp",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "461": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "0"
+      ]
+    },
+    "462": {
+      "op": "bytec 4 // \"lockTime\"",
+      "defined_out": [
+        "\"lockTime\"",
+        "0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "0",
+        "\"lockTime\""
+      ]
+    },
+    "464": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "465": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "tmp%0#0",
+        "maybe_value%0#0"
+      ]
+    },
+    "466": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "tmp%0#0",
+        "maybe_value%0#0",
+        "0"
+      ]
+    },
+    "467": {
+      "op": "bytec 5 // \"timeout\"",
+      "defined_out": [
+        "\"timeout\"",
+        "0",
+        "maybe_value%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "maybe_value%0#0",
+        "0",
+        "\"timeout\""
+      ]
+    },
+    "469": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "470": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "tmp%0#0",
+        "maybe_value%0#0",
+        "maybe_value%1#0"
+      ]
+    },
+    "471": {
+      "op": "+",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%1#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%1#0"
+      ]
+    },
+    "472": {
+      "op": ">",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "473": {
+      "error": "Not expired",
+      "op": "assert // Not expired",
+      "stack_out": []
+    },
+    "474": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "475": {
+      "op": "bytec_0 // \"status\"",
+      "defined_out": [
+        "\"status\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"status\""
+      ]
+    },
+    "476": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%2#0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "maybe_value%2#0",
+        "maybe_exists%2#0"
+      ]
+    },
+    "477": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%2#0"
+      ]
+    },
+    "478": {
+      "op": "!",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "479": {
+      "error": "Already resolved",
+      "op": "assert // Already resolved",
+      "stack_out": []
+    },
+    "480": {
+      "op": "itxn_begin"
+    },
+    "481": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "482": {
+      "op": "bytec_1 // \"agent\"",
+      "defined_out": [
+        "\"agent\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"agent\""
+      ]
+    },
+    "483": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%3#0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "maybe_value%3#0",
+        "maybe_exists%3#0"
+      ]
+    },
+    "484": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%3#0"
+      ]
+    },
+    "485": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "maybe_value%3#0",
+        "0"
+      ]
+    },
+    "486": {
+      "op": "bytec_3 // \"amountLocked\"",
+      "defined_out": [
+        "\"amountLocked\"",
+        "0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "maybe_value%3#0",
+        "0",
+        "\"amountLocked\""
+      ]
+    },
+    "487": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%4#0",
+        "maybe_value%3#0",
+        "maybe_value%4#0"
+      ],
+      "stack_out": [
+        "maybe_value%3#0",
+        "maybe_value%4#0",
+        "maybe_exists%4#0"
+      ]
+    },
+    "488": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%3#0",
+        "maybe_value%4#0"
+      ]
+    },
+    "489": {
+      "op": "itxn_field Amount",
+      "stack_out": [
+        "maybe_value%3#0"
+      ]
+    },
+    "491": {
+      "op": "itxn_field Receiver",
+      "stack_out": []
+    },
+    "493": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "494": {
+      "op": "itxn_field TypeEnum",
+      "stack_out": []
+    },
+    "496": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "497": {
+      "op": "itxn_field Fee",
+      "stack_out": []
+    },
+    "499": {
+      "op": "itxn_submit"
+    },
+    "500": {
+      "op": "bytec_0 // \"status\"",
+      "stack_out": [
+        "\"status\""
+      ]
+    },
+    "501": {
+      "op": "pushint 3 // 3",
+      "defined_out": [
+        "\"status\"",
+        "3"
+      ],
+      "stack_out": [
+        "\"status\"",
+        "3"
+      ]
+    },
+    "503": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "504": {
+      "op": "intc_1 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "505": {
+      "op": "return",
+      "stack_out": []
+    },
+    "506": {
+      "subroutine": "smart_contracts/escrow/contract.algo.ts::EscrowContract.getEscrowInfo[routing]",
+      "params": {},
+      "block": "getEscrowInfo",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "507": {
+      "op": "bytec_1 // \"agent\"",
+      "defined_out": [
+        "\"agent\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"agent\""
+      ]
+    },
+    "508": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "509": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "510": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "maybe_value%0#0",
+        "0"
+      ]
+    },
+    "511": {
+      "op": "bytec_2 // \"provider\"",
+      "defined_out": [
+        "\"provider\"",
+        "0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "0",
+        "\"provider\""
+      ]
+    },
+    "512": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%0#0",
+        "maybe_value%1#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "513": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0"
+      ]
+    },
+    "514": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "0"
+      ]
+    },
+    "515": {
+      "op": "bytec_3 // \"amountLocked\"",
+      "defined_out": [
+        "\"amountLocked\"",
+        "0",
+        "maybe_value%0#0",
+        "maybe_value%1#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "0",
+        "\"amountLocked\""
+      ]
+    },
+    "516": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%2#0",
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_value%2#0",
+        "maybe_exists%2#0"
+      ]
+    },
+    "517": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_value%2#0"
+      ]
+    },
+    "518": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_value%2#0",
+        "0"
+      ]
+    },
+    "519": {
+      "op": "bytec_0 // \"status\"",
+      "defined_out": [
+        "\"status\"",
+        "0",
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_value%2#0",
+        "0",
+        "\"status\""
+      ]
+    },
+    "520": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%3#0",
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_value%2#0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_value%2#0",
+        "maybe_value%3#0",
+        "maybe_exists%3#0"
+      ]
+    },
+    "521": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_value%1#0",
+        "maybe_value%2#0",
+        "maybe_value%3#0"
+      ]
+    },
+    "522": {
+      "op": "uncover 3",
+      "stack_out": [
+        "maybe_value%1#0",
+        "maybe_value%2#0",
+        "maybe_value%3#0",
+        "maybe_value%0#0"
+      ]
+    },
+    "524": {
+      "op": "uncover 3",
+      "stack_out": [
+        "maybe_value%2#0",
+        "maybe_value%3#0",
+        "maybe_value%0#0",
+        "maybe_value%1#0"
+      ]
+    },
+    "526": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%head%1#0",
+        "maybe_value%2#0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "maybe_value%2#0",
+        "maybe_value%3#0",
+        "aggregate%head%1#0"
+      ]
+    },
+    "527": {
+      "op": "uncover 2",
+      "stack_out": [
+        "maybe_value%3#0",
+        "aggregate%head%1#0",
+        "maybe_value%2#0"
+      ]
+    },
+    "529": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%head%1#0",
+        "aggregate%val_as_bytes%0#0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "maybe_value%3#0",
+        "aggregate%head%1#0",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "530": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%head%2#0",
+        "maybe_value%3#0"
+      ],
+      "stack_out": [
+        "maybe_value%3#0",
+        "aggregate%head%2#0"
+      ]
+    },
+    "531": {
+      "op": "swap",
+      "stack_out": [
+        "aggregate%head%2#0",
+        "maybe_value%3#0"
+      ]
+    },
+    "532": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%head%2#0",
+        "aggregate%val_as_bytes%1#0"
+      ],
+      "stack_out": [
+        "aggregate%head%2#0",
+        "aggregate%val_as_bytes%1#0"
+      ]
+    },
+    "533": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%head%3#0"
+      ],
+      "stack_out": [
+        "aggregate%head%3#0"
+      ]
+    },
+    "534": {
+      "op": "bytec 7 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%head%3#0"
+      ],
+      "stack_out": [
+        "aggregate%head%3#0",
+        "0x151f7c75"
+      ]
+    },
+    "536": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%head%3#0"
+      ]
+    },
+    "537": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%1#0"
+      ],
+      "stack_out": [
+        "tmp%1#0"
+      ]
+    },
+    "538": {
+      "op": "log",
+      "stack_out": []
+    },
+    "539": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "540": {
+      "op": "return",
+      "stack_out": []
+    },
+    "541": {
+      "subroutine": "smart_contracts/escrow/contract.algo.ts::EscrowContract.getStatus[routing]",
+      "params": {},
+      "block": "getStatus",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "542": {
+      "op": "bytec_0 // \"status\"",
+      "defined_out": [
+        "\"status\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"status\""
+      ]
+    },
+    "543": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "544": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "545": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "546": {
+      "op": "bytec 7 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "548": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "549": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "550": {
+      "op": "log",
+      "stack_out": []
+    },
+    "551": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "552": {
+      "op": "return",
+      "stack_out": []
+    },
+    "553": {
+      "subroutine": "smart_contracts/escrow/contract.algo.ts::EscrowContract.updateStatus[routing]",
+      "params": {},
+      "block": "updateStatus",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "556": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "557": {
+      "op": "len",
+      "defined_out": [
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0"
+      ]
+    },
+    "558": {
+      "op": "intc_3 // 8",
+      "defined_out": [
+        "8",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0",
+        "8"
+      ]
+    },
+    "559": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "560": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "561": {
+      "op": "btoi",
+      "defined_out": [
+        "newStatus#0"
+      ],
+      "stack_out": [
+        "newStatus#0"
+      ]
+    },
+    "562": {
+      "op": "txn Sender",
+      "defined_out": [
+        "newStatus#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "tmp%0#1"
+      ]
+    },
+    "564": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "newStatus#0",
+        "tmp%0#1",
+        "0"
+      ]
+    },
+    "565": {
+      "op": "bytec_1 // \"agent\"",
+      "defined_out": [
+        "\"agent\"",
+        "0",
+        "newStatus#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "tmp%0#1",
+        "0",
+        "\"agent\""
+      ]
+    },
+    "566": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0",
+        "newStatus#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "tmp%0#1",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "567": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "newStatus#0",
+        "tmp%0#1",
+        "maybe_value%0#0"
+      ]
+    },
+    "568": {
+      "op": "==",
+      "defined_out": [
+        "newStatus#0",
+        "tmp%1#1"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "tmp%1#1"
+      ]
+    },
+    "569": {
+      "op": "bnz updateStatus_bool_true@3",
+      "stack_out": [
+        "newStatus#0"
+      ]
+    },
+    "572": {
+      "op": "txn Sender",
+      "defined_out": [
+        "newStatus#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "tmp%2#0"
+      ]
+    },
+    "574": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "newStatus#0",
+        "tmp%2#0",
+        "0"
+      ]
+    },
+    "575": {
+      "op": "bytec_2 // \"provider\"",
+      "defined_out": [
+        "\"provider\"",
+        "0",
+        "newStatus#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "tmp%2#0",
+        "0",
+        "\"provider\""
+      ]
+    },
+    "576": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%1#0",
+        "newStatus#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "tmp%2#0",
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "577": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "newStatus#0",
+        "tmp%2#0",
+        "maybe_value%1#0"
+      ]
+    },
+    "578": {
+      "op": "==",
+      "defined_out": [
+        "newStatus#0",
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "tmp%3#0"
+      ]
+    },
+    "579": {
+      "op": "bz updateStatus_bool_false@4",
+      "stack_out": [
+        "newStatus#0"
+      ]
+    },
+    "582": {
+      "block": "updateStatus_bool_true@3",
+      "stack_in": [
+        "newStatus#0"
+      ],
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "or_result%0#0"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "or_result%0#0"
+      ]
+    },
+    "583": {
+      "error": "Unauthorized",
+      "block": "updateStatus_bool_merge@5",
+      "stack_in": [
+        "newStatus#0",
+        "or_result%0#0"
+      ],
+      "op": "assert // Unauthorized",
+      "defined_out": [],
+      "stack_out": [
+        "newStatus#0"
+      ]
+    },
+    "584": {
+      "op": "bytec_0 // \"status\"",
+      "defined_out": [
+        "\"status\""
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "\"status\""
+      ]
+    },
+    "585": {
+      "op": "dig 1",
+      "defined_out": [
+        "\"status\"",
+        "newStatus#0"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "\"status\"",
+        "newStatus#0"
+      ]
+    },
+    "587": {
+      "op": "app_global_put",
+      "stack_out": [
+        "newStatus#0"
+      ]
+    },
+    "588": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1",
+        "newStatus#0"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "1"
+      ]
+    },
+    "589": {
+      "op": "return",
+      "stack_out": [
+        "newStatus#0"
+      ]
+    },
+    "590": {
+      "block": "updateStatus_bool_false@4",
+      "stack_in": [
+        "newStatus#0"
+      ],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "or_result%0#0"
+      ],
+      "stack_out": [
+        "newStatus#0",
+        "or_result%0#0"
+      ]
+    },
+    "591": {
+      "op": "b updateStatus_bool_merge@5"
+    }
+  }
+}

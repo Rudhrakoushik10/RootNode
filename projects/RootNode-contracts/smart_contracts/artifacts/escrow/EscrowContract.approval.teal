@@ -1,0 +1,728 @@
+#pragma version 11
+#pragma typetrack false
+
+// @algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram() -> uint64:
+main:
+    intcblock 0 1 2 8
+    bytecblock "status" "agent" "provider" "amountLocked" "lockTime" "timeout" "serviceResult" 0x151f7c75
+    // smart_contracts/escrow/contract.algo.ts:10
+    // export class EscrowContract extends Contract {
+    txn NumAppArgs
+    bz main___algots__.defaultCreate@16
+    txn OnCompletion
+    !
+    assert // OnCompletion must be NoOp
+    txn ApplicationID
+    assert
+    pushbytess 0xe7f72174 0x4c9d2ea7 0x7fef3fb7 0x5b7201d5 0x547a2b7f 0x8d0cf25c 0xb2ef0d4d 0x992ac3be 0x79fdc773 // method "initialize(address,address,string,uint64,uint64)void", method "lockFunds(pay)void", method "confirmService(byte[])void", method "releaseFunds()void", method "rejectAndRefund(string)void", method "expireAndRefund()void", method "getEscrowInfo()(address,address,uint64,uint64)", method "getStatus()uint64", method "updateStatus(uint64)void"
+    txna ApplicationArgs 0
+    match initialize lockFunds confirmService releaseFunds rejectAndRefund expireAndRefund getEscrowInfo getStatus updateStatus
+    err
+
+main___algots__.defaultCreate@16:
+    // smart_contracts/escrow/contract.algo.ts:10
+    // export class EscrowContract extends Contract {
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    assert // OnCompletion must be NoOp && can only call when creating
+    intc_1 // 1
+    return
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.initialize[routing]() -> void:
+initialize:
+    // smart_contracts/escrow/contract.algo.ts:20
+    // @abimethod({ allowActions: 'NoOp' })
+    txna ApplicationArgs 1
+    dup
+    len
+    pushint 32 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 2
+    dup
+    len
+    pushint 32 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    txna ApplicationArgs 3
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_2 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    txna ApplicationArgs 4
+    dup
+    len
+    intc_3 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    txna ApplicationArgs 5
+    dup
+    len
+    intc_3 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/escrow/contract.algo.ts:11
+    // agent = GlobalState<Account>()
+    bytec_1 // "agent"
+    // smart_contracts/escrow/contract.algo.ts:22
+    // this.agent.value = agent
+    uncover 5
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:12
+    // provider = GlobalState<Account>()
+    bytec_2 // "provider"
+    // smart_contracts/escrow/contract.algo.ts:23
+    // this.provider.value = provider
+    uncover 4
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:15
+    // serviceId = GlobalState<string>()
+    pushbytes "serviceId"
+    // smart_contracts/escrow/contract.algo.ts:24
+    // this.serviceId.value = serviceId
+    uncover 3
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:13
+    // amountLocked = GlobalState<uint64>()
+    bytec_3 // "amountLocked"
+    // smart_contracts/escrow/contract.algo.ts:25
+    // this.amountLocked.value = amount
+    uncover 2
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:26
+    // this.status.value = STATUS_PENDING
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:17
+    // lockTime = GlobalState<uint64>()
+    bytec 4 // "lockTime"
+    // smart_contracts/escrow/contract.algo.ts:27
+    // this.lockTime.value = Global.latestTimestamp
+    global LatestTimestamp
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:18
+    // timeout = GlobalState<uint64>()
+    bytec 5 // "timeout"
+    // smart_contracts/escrow/contract.algo.ts:28
+    // this.timeout.value = timeoutSecs
+    swap
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:16
+    // serviceResult = GlobalState<bytes>()
+    bytec 6 // "serviceResult"
+    // smart_contracts/escrow/contract.algo.ts:29
+    // this.serviceResult.value = Global.zeroAddress.bytes
+    global ZeroAddress
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:20
+    // @abimethod({ allowActions: 'NoOp' })
+    intc_1 // 1
+    return
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.lockFunds[routing]() -> void:
+lockFunds:
+    // smart_contracts/escrow/contract.algo.ts:32
+    // @abimethod({ allowActions: 'NoOp' })
+    txn GroupIndex
+    intc_1 // 1
+    -
+    dup
+    gtxns TypeEnum
+    intc_1 // pay
+    ==
+    assert // transaction type is pay
+    // smart_contracts/escrow/contract.algo.ts:34
+    // assert(Txn.sender === this.agent.value, 'Only agent can lock funds')
+    txn Sender
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:11
+    // agent = GlobalState<Account>()
+    bytec_1 // "agent"
+    // smart_contracts/escrow/contract.algo.ts:34
+    // assert(Txn.sender === this.agent.value, 'Only agent can lock funds')
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    assert // Only agent can lock funds
+    // smart_contracts/escrow/contract.algo.ts:35
+    // assert(this.status.value === STATUS_PENDING, 'Escrow not in pending state')
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:35
+    // assert(this.status.value === STATUS_PENDING, 'Escrow not in pending state')
+    app_global_get_ex
+    assert // check GlobalState exists
+    !
+    assert // Escrow not in pending state
+    // smart_contracts/escrow/contract.algo.ts:37
+    // payment.receiver === Global.currentApplicationAddress,
+    dup
+    gtxns Receiver
+    global CurrentApplicationAddress
+    ==
+    // smart_contracts/escrow/contract.algo.ts:36-39
+    // assert(
+    //   payment.receiver === Global.currentApplicationAddress,
+    //   'Payment must go to escrow'
+    // )
+    assert // Payment must go to escrow
+    // smart_contracts/escrow/contract.algo.ts:41
+    // payment.amount === this.amountLocked.value,
+    gtxns Amount
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:13
+    // amountLocked = GlobalState<uint64>()
+    bytec_3 // "amountLocked"
+    // smart_contracts/escrow/contract.algo.ts:41
+    // payment.amount === this.amountLocked.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    // smart_contracts/escrow/contract.algo.ts:40-43
+    // assert(
+    //   payment.amount === this.amountLocked.value,
+    //   'Payment amount must match locked amount'
+    // )
+    assert // Payment amount must match locked amount
+    // smart_contracts/escrow/contract.algo.ts:32
+    // @abimethod({ allowActions: 'NoOp' })
+    intc_1 // 1
+    return
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.confirmService[routing]() -> void:
+confirmService:
+    // smart_contracts/escrow/contract.algo.ts:46
+    // @abimethod({ allowActions: 'NoOp' })
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_2 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    extract 2 0
+    // smart_contracts/escrow/contract.algo.ts:48
+    // assert(Txn.sender === this.provider.value, 'Only provider can confirm')
+    txn Sender
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:12
+    // provider = GlobalState<Account>()
+    bytec_2 // "provider"
+    // smart_contracts/escrow/contract.algo.ts:48
+    // assert(Txn.sender === this.provider.value, 'Only provider can confirm')
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    assert // Only provider can confirm
+    // smart_contracts/escrow/contract.algo.ts:49
+    // assert(this.status.value === STATUS_PENDING, 'Escrow not in pending state')
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:49
+    // assert(this.status.value === STATUS_PENDING, 'Escrow not in pending state')
+    app_global_get_ex
+    assert // check GlobalState exists
+    !
+    assert // Escrow not in pending state
+    // smart_contracts/escrow/contract.algo.ts:16
+    // serviceResult = GlobalState<bytes>()
+    bytec 6 // "serviceResult"
+    // smart_contracts/escrow/contract.algo.ts:50
+    // this.serviceResult.value = serviceResult
+    swap
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:51
+    // this.status.value = STATUS_COMPLETED
+    intc_1 // 1
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:46
+    // @abimethod({ allowActions: 'NoOp' })
+    intc_1 // 1
+    return
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.releaseFunds[routing]() -> void:
+releaseFunds:
+    // smart_contracts/escrow/contract.algo.ts:56
+    // assert(Txn.sender === this.agent.value, 'Only agent can release')
+    txn Sender
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:11
+    // agent = GlobalState<Account>()
+    bytec_1 // "agent"
+    // smart_contracts/escrow/contract.algo.ts:56
+    // assert(Txn.sender === this.agent.value, 'Only agent can release')
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    assert // Only agent can release
+    // smart_contracts/escrow/contract.algo.ts:57
+    // assert(this.status.value === STATUS_COMPLETED, 'Service not confirmed')
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:57
+    // assert(this.status.value === STATUS_COMPLETED, 'Service not confirmed')
+    app_global_get_ex
+    assert // check GlobalState exists
+    intc_1 // 1
+    ==
+    assert // Service not confirmed
+    // smart_contracts/escrow/contract.algo.ts:59-63
+    // itxn.payment({
+    //   receiver: this.provider.value,
+    //   amount: this.amountLocked.value,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_begin
+    // smart_contracts/escrow/contract.algo.ts:60
+    // receiver: this.provider.value,
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:12
+    // provider = GlobalState<Account>()
+    bytec_2 // "provider"
+    // smart_contracts/escrow/contract.algo.ts:60
+    // receiver: this.provider.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:61
+    // amount: this.amountLocked.value,
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:13
+    // amountLocked = GlobalState<uint64>()
+    bytec_3 // "amountLocked"
+    // smart_contracts/escrow/contract.algo.ts:61
+    // amount: this.amountLocked.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    itxn_field Amount
+    itxn_field Receiver
+    // smart_contracts/escrow/contract.algo.ts:59-63
+    // itxn.payment({
+    //   receiver: this.provider.value,
+    //   amount: this.amountLocked.value,
+    //   fee: Uint64(0),
+    // }).submit()
+    intc_1 // 1
+    itxn_field TypeEnum
+    // smart_contracts/escrow/contract.algo.ts:62
+    // fee: Uint64(0),
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/escrow/contract.algo.ts:59-63
+    // itxn.payment({
+    //   receiver: this.provider.value,
+    //   amount: this.amountLocked.value,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_submit
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:65
+    // this.status.value = STATUS_COMPLETED
+    intc_1 // 1
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:54
+    // @abimethod({ allowActions: 'NoOp' })
+    intc_1 // 1
+    return
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.rejectAndRefund[routing]() -> void:
+rejectAndRefund:
+    // smart_contracts/escrow/contract.algo.ts:68
+    // @abimethod({ allowActions: 'NoOp' })
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_2 // 2
+    +
+    swap
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    // smart_contracts/escrow/contract.algo.ts:70
+    // assert(Txn.sender === this.provider.value || Txn.sender === this.agent.value, 'Only provider or agent')
+    txn Sender
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:12
+    // provider = GlobalState<Account>()
+    bytec_2 // "provider"
+    // smart_contracts/escrow/contract.algo.ts:70
+    // assert(Txn.sender === this.provider.value || Txn.sender === this.agent.value, 'Only provider or agent')
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    bnz rejectAndRefund_bool_true@3
+    txn Sender
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:11
+    // agent = GlobalState<Account>()
+    bytec_1 // "agent"
+    // smart_contracts/escrow/contract.algo.ts:70
+    // assert(Txn.sender === this.provider.value || Txn.sender === this.agent.value, 'Only provider or agent')
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    bz rejectAndRefund_bool_false@4
+
+rejectAndRefund_bool_true@3:
+    intc_1 // 1
+
+rejectAndRefund_bool_merge@5:
+    // smart_contracts/escrow/contract.algo.ts:70
+    // assert(Txn.sender === this.provider.value || Txn.sender === this.agent.value, 'Only provider or agent')
+    assert // Only provider or agent
+    // smart_contracts/escrow/contract.algo.ts:71
+    // assert(this.status.value === STATUS_PENDING, 'Escrow not in pending state')
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:71
+    // assert(this.status.value === STATUS_PENDING, 'Escrow not in pending state')
+    app_global_get_ex
+    assert // check GlobalState exists
+    !
+    assert // Escrow not in pending state
+    // smart_contracts/escrow/contract.algo.ts:73-77
+    // itxn.payment({
+    //   receiver: this.agent.value,
+    //   amount: this.amountLocked.value,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_begin
+    // smart_contracts/escrow/contract.algo.ts:74
+    // receiver: this.agent.value,
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:11
+    // agent = GlobalState<Account>()
+    bytec_1 // "agent"
+    // smart_contracts/escrow/contract.algo.ts:74
+    // receiver: this.agent.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:75
+    // amount: this.amountLocked.value,
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:13
+    // amountLocked = GlobalState<uint64>()
+    bytec_3 // "amountLocked"
+    // smart_contracts/escrow/contract.algo.ts:75
+    // amount: this.amountLocked.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    itxn_field Amount
+    itxn_field Receiver
+    // smart_contracts/escrow/contract.algo.ts:73-77
+    // itxn.payment({
+    //   receiver: this.agent.value,
+    //   amount: this.amountLocked.value,
+    //   fee: Uint64(0),
+    // }).submit()
+    intc_1 // 1
+    itxn_field TypeEnum
+    // smart_contracts/escrow/contract.algo.ts:76
+    // fee: Uint64(0),
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/escrow/contract.algo.ts:73-77
+    // itxn.payment({
+    //   receiver: this.agent.value,
+    //   amount: this.amountLocked.value,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_submit
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:79
+    // this.status.value = STATUS_REFUNDED
+    intc_2 // 2
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:68
+    // @abimethod({ allowActions: 'NoOp' })
+    intc_1 // 1
+    return
+
+rejectAndRefund_bool_false@4:
+    intc_0 // 0
+    b rejectAndRefund_bool_merge@5
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.expireAndRefund[routing]() -> void:
+expireAndRefund:
+    // smart_contracts/escrow/contract.algo.ts:84
+    // assert(Global.latestTimestamp > this.lockTime.value + this.timeout.value, 'Not expired')
+    global LatestTimestamp
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:17
+    // lockTime = GlobalState<uint64>()
+    bytec 4 // "lockTime"
+    // smart_contracts/escrow/contract.algo.ts:84
+    // assert(Global.latestTimestamp > this.lockTime.value + this.timeout.value, 'Not expired')
+    app_global_get_ex
+    assert // check GlobalState exists
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:18
+    // timeout = GlobalState<uint64>()
+    bytec 5 // "timeout"
+    // smart_contracts/escrow/contract.algo.ts:84
+    // assert(Global.latestTimestamp > this.lockTime.value + this.timeout.value, 'Not expired')
+    app_global_get_ex
+    assert // check GlobalState exists
+    +
+    >
+    assert // Not expired
+    // smart_contracts/escrow/contract.algo.ts:85
+    // assert(this.status.value === STATUS_PENDING, 'Already resolved')
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:85
+    // assert(this.status.value === STATUS_PENDING, 'Already resolved')
+    app_global_get_ex
+    assert // check GlobalState exists
+    !
+    assert // Already resolved
+    // smart_contracts/escrow/contract.algo.ts:87-91
+    // itxn.payment({
+    //   receiver: this.agent.value,
+    //   amount: this.amountLocked.value,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_begin
+    // smart_contracts/escrow/contract.algo.ts:88
+    // receiver: this.agent.value,
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:11
+    // agent = GlobalState<Account>()
+    bytec_1 // "agent"
+    // smart_contracts/escrow/contract.algo.ts:88
+    // receiver: this.agent.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:89
+    // amount: this.amountLocked.value,
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:13
+    // amountLocked = GlobalState<uint64>()
+    bytec_3 // "amountLocked"
+    // smart_contracts/escrow/contract.algo.ts:89
+    // amount: this.amountLocked.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    itxn_field Amount
+    itxn_field Receiver
+    // smart_contracts/escrow/contract.algo.ts:87-91
+    // itxn.payment({
+    //   receiver: this.agent.value,
+    //   amount: this.amountLocked.value,
+    //   fee: Uint64(0),
+    // }).submit()
+    intc_1 // 1
+    itxn_field TypeEnum
+    // smart_contracts/escrow/contract.algo.ts:90
+    // fee: Uint64(0),
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/escrow/contract.algo.ts:87-91
+    // itxn.payment({
+    //   receiver: this.agent.value,
+    //   amount: this.amountLocked.value,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_submit
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:93
+    // this.status.value = STATUS_EXPIRED
+    pushint 3 // 3
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:82
+    // @abimethod({ allowActions: 'NoOp' })
+    intc_1 // 1
+    return
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.getEscrowInfo[routing]() -> void:
+getEscrowInfo:
+    // smart_contracts/escrow/contract.algo.ts:99
+    // this.agent.value,
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:11
+    // agent = GlobalState<Account>()
+    bytec_1 // "agent"
+    // smart_contracts/escrow/contract.algo.ts:99
+    // this.agent.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:100
+    // this.provider.value,
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:12
+    // provider = GlobalState<Account>()
+    bytec_2 // "provider"
+    // smart_contracts/escrow/contract.algo.ts:100
+    // this.provider.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:101
+    // this.amountLocked.value,
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:13
+    // amountLocked = GlobalState<uint64>()
+    bytec_3 // "amountLocked"
+    // smart_contracts/escrow/contract.algo.ts:101
+    // this.amountLocked.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:102
+    // this.status.value,
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:102
+    // this.status.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:98-103
+    // return [
+    //   this.agent.value,
+    //   this.provider.value,
+    //   this.amountLocked.value,
+    //   this.status.value,
+    // ]
+    uncover 3
+    uncover 3
+    concat
+    uncover 2
+    itob
+    concat
+    swap
+    itob
+    concat
+    // smart_contracts/escrow/contract.algo.ts:96
+    // @abimethod({ allowActions: 'NoOp', readonly: true })
+    bytec 7 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.getStatus[routing]() -> void:
+getStatus:
+    // smart_contracts/escrow/contract.algo.ts:108
+    // return this.status.value
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:108
+    // return this.status.value
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:106
+    // @abimethod({ allowActions: 'NoOp', readonly: true })
+    itob
+    bytec 7 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.updateStatus[routing]() -> void:
+updateStatus:
+    // smart_contracts/escrow/contract.algo.ts:111
+    // @abimethod({ allowActions: 'NoOp' })
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_3 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/escrow/contract.algo.ts:113
+    // assert(Txn.sender === this.agent.value || Txn.sender === this.provider.value, 'Unauthorized')
+    txn Sender
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:11
+    // agent = GlobalState<Account>()
+    bytec_1 // "agent"
+    // smart_contracts/escrow/contract.algo.ts:113
+    // assert(Txn.sender === this.agent.value || Txn.sender === this.provider.value, 'Unauthorized')
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    bnz updateStatus_bool_true@3
+    txn Sender
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:12
+    // provider = GlobalState<Account>()
+    bytec_2 // "provider"
+    // smart_contracts/escrow/contract.algo.ts:113
+    // assert(Txn.sender === this.agent.value || Txn.sender === this.provider.value, 'Unauthorized')
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    bz updateStatus_bool_false@4
+
+updateStatus_bool_true@3:
+    intc_1 // 1
+
+updateStatus_bool_merge@5:
+    // smart_contracts/escrow/contract.algo.ts:113
+    // assert(Txn.sender === this.agent.value || Txn.sender === this.provider.value, 'Unauthorized')
+    assert // Unauthorized
+    // smart_contracts/escrow/contract.algo.ts:14
+    // status = GlobalState<uint64>()
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:114
+    // this.status.value = newStatus
+    dig 1
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:111
+    // @abimethod({ allowActions: 'NoOp' })
+    intc_1 // 1
+    return
+
+updateStatus_bool_false@4:
+    intc_0 // 0
+    b updateStatus_bool_merge@5

@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+body {
+  @apply bg-[#0f1117] text-[#e2e8f0] font-sans;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d3148;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-pulse-slow {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.badge {
+  @apply px-2 py-0.5 rounded text-[11px] font-medium uppercase tracking-wider;
+}
+
+.badge-success { background: #14532d; color: #4ade80; }
+.badge-rejected { background: #450a0a; color: #f87171; }
+.badge-pending { background: #1c1917; color: #fb923c; }
+.badge-refunded { background: #431407; color: #fb923c; }
+.badge-on-chain { background: #0c1a35; color: #3b82f6; border: 0.5px solid #1d4ed8; }
+.badge-active { background: #14532d; color: #22c55e; }
+.badge-warning { background: #451a03; color: #fb923c; }
