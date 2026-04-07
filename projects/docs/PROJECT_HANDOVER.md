@@ -244,6 +244,153 @@ npm run dev
 
 ---
 
+## 11. Instructions to Continue Development on New System
+
+### 11.1 Critical First Steps After Clone
+
+```bash
+# 1. Verify contract App IDs are consistent
+cat projects/RootNode-backend/.contract-config.json
+cat projects/RootNode-backend/src/config.ts
+# Both files must have the SAME App IDs for:
+# - spend_tracker
+# - receipt_anchor  
+# - policy_contract
+
+# If they differ, update src/config.ts to match .contract-config.json
+```
+
+### 11.2 Quick Test - Verify Subprocess Contract Call
+
+Before running the full flow, test the subprocess approach manually:
+
+```bash
+cd projects/RootNode-backend
+
+# Test recordSpend (known working)
+node scripts/callContract.cjs recordSpend '{"agentAddress":"HZBVD5XH7VFZUFBL6VPFGSQIONYHZB3LKS5IHPLDQIVZRBHGWGYA3LRTI","serviceId":"weather-api","amountMicroAlgos":100000}'
+
+# Expected output: {"success":true,"txId":"...","confirmedRound":...}
+```
+
+### 11.3 Full End-to-End Testing Checklist
+
+Follow these steps in order to verify the complete system:
+
+#### Step 1: Start All Services
+```bash
+# Terminal 1 - LocalNet
+algokit localnet start
+algokit localnet status
+
+# Terminal 2 - Backend
+cd projects/RootNode-backend
+npm run dev
+# Note: backend will print wallet address - fund it
+
+# Terminal 3 - Fund Backend Wallet
+algokit wallet list
+# Find an account with funds (usually has 10000+ ALGO)
+algokit send --from <FUNDING_ACCOUNT> --to <BACKEND_WALLET> --amount 100
+
+# Terminal 4 - Mock Provider
+cd projects/RootNode-mock-provider
+npm run dev
+
+# Terminal 5 - Frontend
+cd projects/RootNode-frontend
+npm run dev
+```
+
+#### Step 2: Submit Test Task via API
+```bash
+curl -X POST http://localhost:3001/api/tasks \
+  -H "Content-Type: application/json" \
+  -d '{"task":"Get weather for Chennai"}'
+```
+
+#### Step 3: Verify Backend Console Shows
+```
+🔥 recordSpendOnChain - Using subprocess approach 🔥
+✅✅✅ SPEND RECORD CONFIRMED ON-CHAIN - txId: <TXID> round: <ROUND>
+
+🔥 anchorReceiptOnChain - Using subprocess approach 🔥
+✅✅✅ RECEIPT ANCHORED ON-CHAIN - txId: <TXID> round: <ROUND>
+```
+
+#### Step 4: Verify Frontend
+1. Open `http://localhost:5173`
+2. Check TransactionFeed - should show transaction with Lora link
+3. Check ReceiptLog - should show receipt with Lora link
+4. Click Lora links - should open `https://lora.algokit.io/localnet/transaction/<TXID>`
+
+#### Step 5: Verify On-Chain State
+```bash
+# Check contract state via AlgoKit
+cd projects/RootNode-contracts
+
+# Read SpendTracker global state
+algokit client read global --app-id 1061
+
+# Read ReceiptAnchor global state  
+algokit client read global --app-id 1063
+```
+
+### 11.4 If anchorReceiptOnChain Fails
+
+The `anchorReceipt` method expects `byte[]` type. If it fails:
+
+1. Check the receipt hash format (should be hex string)
+2. The subprocess script converts it: `Buffer.from(params.receiptHash, 'hex')`
+3. Verify `receiptAnchorContract.appId` is correct in both config files
+
+### 11.5 Debugging Contract Calls
+
+```bash
+# View recent transactions on localnet
+algokit client list --limit 20
+
+# Get specific transaction details
+algokit client read --txid <TXID>
+
+# Check contract logs
+algokit client read local --app-id <APPID> --address <WALLET>
+```
+
+### 11.6 Quick Fix - Reset LocalNet and Redeploy
+
+If everything is broken and you need a clean start:
+
+```bash
+# 1. Stop all services
+# 2. Reset localnet
+algokit localnet reset
+
+# 3. Redeploy contracts
+cd projects/RootNode-contracts
+algokit project deploy localnet
+# COPY the new App IDs from output!
+
+# 4. Update BOTH files with new IDs:
+# - projects/RootNode-backend/.contract-config.json
+# - projects/RootNode-backend/src/config.ts
+
+# 5. Restart all services
+```
+
+### 11.7 Verification Success Criteria
+
+The system is working correctly when:
+
+- [ ] `recordSpendOnChain` returns real txId (verified in backend console)
+- [ ] `anchorReceiptOnChain` returns real txId (verified in backend console)
+- [ ] Frontend TransactionFeed shows transaction with Lora link
+- [ ] Frontend ReceiptLog shows receipt with Lora link
+- [ ] Clicking Lora links opens valid transaction page
+- [ ] Contract state reflects new transactions (totalSpent, totalReceipts increment)
+
+---
+
 ## 8. Environment Variables
 
 ### Backend (.env)
@@ -289,9 +436,26 @@ algokit localnet reset
 
 ## 10. Git History
 
-**Last commit:** `1cb8fbf` - "feat: Agentic Service Buyer on Algorand - complete system with smart contracts, backend, frontend"
+| Commit | Description |
+|--------|-------------|
+| `1cb8fbf` | Initial commit - "feat: Agentic Service Buyer on Algorand - complete system" |
+| `efd2ae7` | Latest - "feat: Add contract integration, Lora explorer, subprocess calling, frontend improvements" |
 
-**This handover covers:** All changes from the current working directory state including contract integration, Lora explorer, subprocess calling approach, and frontend improvements.
+**This handover covers:** All changes including contract integration, Lora explorer, subprocess calling approach, and frontend improvements.
+
+---
+
+## 12. Key Contacts / Notes for Next Developer
+
+- **Original Developer:** AI Assistant (Claude/OpenCode)
+- **Project Purpose:** Demo for blockchain transaction verification on Algorand
+- **Key Demo Goal:** Show real blockchain txIds and Lora explorer links in frontend
+
+### If You Need Help
+1. AlgoKit docs: https://dev.algorand.co
+2. Algorand Foundation repos: https://github.com/algorandfoundation
+3. Puya (TypeScript contracts): https://github.com/algorandfoundation/puya-ts
+4. x402 Protocol: https://x402.org
 
 ---
 
