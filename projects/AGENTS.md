@@ -1,141 +1,184 @@
 # AGENTS.md
 
-<role>
-You are an expert Algorand smart contract developer using Algorand TypeScript (PuyaTs) or Algorand Python (PuyaPy). Generate accurate, secure, efficient code with ZERO hallucinations. Always use official documentation and canonical examples.
-</role>
+## Overview
 
-<core_principles>
+This project develops Algorand blockchain applications including smart contracts, frontend interfaces and x402 applications. When working here, always leverage the available skills and MCP tools before writing code—they provide canonical syntax, examples, and documentation that prevent errors and save time.
 
-### What You're Building
-- Modern Algorand smart contracts compiled to TEAL bytecode by the Puya compiler
-- Algorand TypeScript/Python are AVM-constrained subsets, NOT full TypeScript/Python
+## Creating New Projects
 
-### What You Must NEVER Do
-- Use PyTEAL or Beaker (legacy, superseded)
-- Write raw TEAL (always use Algorand TypeScript/Python)
-- Import external/third-party libraries into contract code
+Before initializing any AlgoKit project:
 
-### What You Must ALWAYS Do
-- Follow the mandatory workflow below before writing code
-- Use canonical examples from priority repositories
-- Default to TypeScript unless user explicitly requests Python
+1. **Load the skill**: Use `algorand-project-setup` skill
+2. **Run**: `algokit init -n <name> -t typescript --answer preset_name production --defaults`
 
-</core_principles>
+## Understanding AVM Constraints
 
-<mandatory_workflow>
+Before writing any smart contract, understand what the AVM actually is — a stack machine with two types (`uint64`, `bytes`) and hard resource limits. LLMs default to TEAL/PyTeal and treat contract code like normal TypeScript/Python. The `algorand-core` skill resets this mental model.
 
-## Required Workflow
+1. **Load the core skill**: Use `algorand-core` for AVM mental model, execution model, and resource limits
+2. **Then proceed** to the language-specific skill for syntax and patterns
 
-**ALWAYS follow this exact order before writing ANY Algorand code:**
+## Writing Smart Contracts
 
-### Step 1: Search Documentation
-Use the documentation MCP configured for this project:
+Before writing ANY Algorand contract code:
 
-**If Kappa MCP is installed:**
-- Use `kappa_search_algorand_knowledge_sources` for conceptual guidance and official documentation
+0. **Understand AVM constraints**: Use `algorand-core` skill for the foundational mental model
+1. **Load the skill first**: Use `algorand-typescript` (or `algorand-python` for Python)
+2. **Search docs**: Call `kapa_search_algorand_knowledge_sources` for concepts
+3. **Get examples**: Use `github_get_file_contents` from:
+   - `algorandfoundation/devportal-code-examples`
+   - `algorandfoundation/puya-ts` (TypeScript) or `algorandfoundation/puya` (Python)
+4. **Write code** following skill guidance
+5. **Build/test**: `algokit project run build && algokit project run test`
 
-**If Context7 MCP is installed:**
-- Use `get-library-docs` with library ID `/websites/dev_algorand_co`
-- Do NOT use `resolve-library-id` for Algorand - use the library ID directly
+## Deploying & Calling Contracts
 
-### Step 2: Retrieve Canonical Examples
-If VibeKit MCP is installed, use its GitHub tools to find working code:
-- `github_search_code` — Find patterns across algorandfoundation repos
-- `github_get_file_contents` — Retrieve specific files
+Use the **CLI and generated typed clients** for deployment and interaction.
 
-**Priority repositories:**
-1. `algorandfoundation/devportal-code-examples` — Beginner patterns
-   - TypeScript: `projects/typescript-examples/contracts/`
-   - Python: `projects/python-examples/`
-2. `algorandfoundation/puya-ts` — Advanced TypeScript examples
-   - `examples/hello-world/`, `examples/hello-world-abi/`
-   - `examples/calculator/`, `examples/auction/`, `examples/voting/`
-3. `algorandfoundation/puya` — Advanced Python examples
-4. `algorandfoundation/algokit-*-template` — Project templates
+### Workflow
 
-### Step 3: Load Relevant Skill
-Check the skills table below and load the appropriate skill for detailed workflow guidance. Skills contain critical syntax rules, patterns, and edge cases.
+1. **Load the skill**: Use `algorand-typescript` or `algorand-python` — deployment/interaction references are included
+2. **Start localnet**: `algokit localnet start`
+3. **Build contracts**: `algokit project run build`
+4. **Deploy to localnet**: `algokit project deploy localnet`
+   - Handles idempotent deployment (safe to re-run)
+   - Note the App ID from the deployment output
 
-</mandatory_workflow>
+### Contract Interaction
 
-<skills>
+After deployment, interact with contracts using the generated typed client:
 
-## Agent Skills
+1. **Write interaction scripts** using the typed client
+2. **Use the typed client** generated from the ARC-56 app spec
+3. **Run scripts**: `npx tsx scripts/call-contract.ts` (TS) or `python scripts/call_contract.py` (Python)
 
-Skills are markdown docs with detailed workflows and syntax rules. **Always load the relevant skill before implementing.**
+See the `deploy-interaction.md` reference in your language skill for detailed patterns.
 
-| Task | Skill | When to Load |
-|------|-------|--------------|
-| Write contract code | `build-smart-contracts` | Creating new contracts, adding methods/features |
-| TypeScript syntax | `algorand-typescript` | Puya compiler errors, AVM types, clone(), storage patterns |
-| Create new project | `create-project` | `algokit init`, scaffolding new dApps |
-| Build/compile/test | `use-algokit-cli` | Running algokit commands, localnet management |
-| Write tests | `test-smart-contracts` | Integration tests, algorandFixture, multi-user scenarios |
-| Deploy/call contracts | `call-smart-contracts` | Deployment scripts, calling methods, reading state |
-| React frontend | `deploy-react-frontend` | Wallet integration, typed clients in React |
-| Find examples | `search-algorand-examples` | Searching GitHub for patterns |
-| ARC standards | `implement-arc-standards` | ARC-4, ARC-32, ARC-56, ABI encoding |
-| Client code | `use-algokit-utils` | AlgorandClient, sending transactions |
-| Debug errors | `troubleshoot-errors` | Logic eval errors, transaction failures |
+## Building React Frontends
 
-</skills>
+Before building a React frontend that interacts with Algorand contracts:
 
-<mcp_tools>
+1. **Load the skill**: Use `algorand-frontend` skill
+2. **Prerequisites**: Deployed contract with known App ID, ARC-56 app spec
+3. **Generate typed client**: `algokit generate client MyContract.arc56.json --output src/contracts/MyContractClient.ts`
+4. **Install deps**: `npm install @algorandfoundation/algokit-utils @txnlab/use-wallet-react algosdk`
+5. **Follow the "signer handoff" pattern**:
+   - Set up `WalletProvider` with `@txnlab/use-wallet-react`
+   - Get `transactionSigner` from `useWallet()` hook
+   - Register signer: `algorand.setSigner(activeAddress, transactionSigner)`
+   - Create typed client with `defaultSender: activeAddress`
 
-## MCP Tool Guidance
+## Available Skills
 
-Your project may have different MCPs configured. Check which tools are available and use the appropriate ones.
+| Task                         | Skill                      |
+| ---------------------------- | -------------------------- |
+| AVM mental model, limits     | `algorand-core`            |
+| Initialize projects, CLI     | `algorand-project-setup`   |
+| TypeScript development       | `algorand-typescript`      |
+| Python development           | `algorand-python`          |
+| React frontends              | `algorand-frontend`        |
+| TypeScript x402 payments     | `algorand-x402-typescript` |
+| Python x402 payments         | `algorand-x402-python`     |
 
-### Documentation Search (use one)
+Each language skill covers the full lifecycle: syntax, building, testing, deployment, AlgoKit Utils, ARC standards, and troubleshooting.
 
-**Kappa MCP:**
-- `kappa_search_algorand_knowledge_sources` — Query for conceptual guidance and official docs
+## MCP Tools
 
-**Context7 MCP:**
-- `get-library-docs` — Query with library ID `/websites/dev_algorand_co`
-- Skip `resolve-library-id` for Algorand queries - use the library ID directly
+**Important:** These tools are provided by MCP servers. If a tool isn't available when you try to use it, the MCP server may not be configured. Check for a `.mcp.json` (Claude Code) or `opencode.json` (OpenCode) file in the project root. If the config exists but tools still aren't available, restart your coding agent.
 
-### Code Examples (VibeKit MCP)
+**Note:** MCP tool names may have different prefixes depending on your coding agent. For example:
+- Claude Code: `mcp__kapa__search_algorand_knowledge_sources`
+- Other agents may use: `kapa_search_algorand_knowledge_sources`
 
-If VibeKit MCP is installed, use GitHub tools:
-- `github_search_code` — Search across algorandfoundation repos
-- `github_get_file_contents` — Fetch specific files
+The tool functionality is the same regardless of prefix.
 
-**Always list directory contents first** before fetching files to avoid 404 errors.
+### Documentation Search (Kapa)
 
-### Blockchain Interaction (VibeKit MCP)
-- **Deployment**: `app_deploy`, `app_call`, `app_get_info`
-- **State reads**: `read_global_state`, `read_local_state`, `read_box`
-- **Accounts**: `list_accounts`, `fund_account`, `get_account_info`
-- **Debugging**: `indexer_lookup_application_logs`, `indexer_lookup_transaction`
-- **Assets**: `create_asset`, `asset_transfer`, `asset_opt_in`
+| Tool                                      | Purpose                       |
+| ----------------------------------------- | ----------------------------- |
+| `kapa_search_algorand_knowledge_sources` | Search official Algorand docs |
 
-**Tip**: For large app specs (>2KB), use `appSpecPath` parameter with absolute file path.
+### GitHub (Code Examples)
 
-</mcp_tools>
+| Tool                         | Purpose                          |
+| ---------------------------- | -------------------------------- |
+| `github_get_file_contents`   | Retrieve example code from repos |
+| `github_search_code`         | Find code patterns across repos  |
+| `github_search_repositories` | Discover repos by topic/name     |
 
-<commands>
+## Troubleshooting
 
-## Development Commands
+### MCP Tools Not Available
 
-```bash
-algokit localnet start          # Start local network
-algokit project run build       # Compile contracts, generate clients
-algokit project run test        # Run integration tests
-algokit project deploy localnet # Deploy to localnet
+If MCP tools aren't available, use these fallbacks:
+
+| Missing Tool                              | Fallback                                                        |
+| ----------------------------------------- | --------------------------------------------------------------- |
+| `kapa_search_algorand_knowledge_sources` | Use web search for "site:dev.algorand.co {query}"               |
+| `github_get_file_contents`                | Use web search or browse GitHub directly                        |
+| `github_search_code`                      | Use web search for "site:github.com algorandfoundation {query}" |
+
+**To fix MCP configuration:**
+
+1. **Check config exists**: Look for `.mcp.json` (Claude Code), `opencode.json` (OpenCode), or `.cursor/mcp.json` (Cursor)
+2. **Verify server entries**: Config should include `kapa` and `github` MCP servers
+3. **Restart the agent**: MCP tools load at startup; restart after config changes
+
+**Note:** You can always proceed without MCPs by:
+
+- Using web search for documentation (dev.algorand.co)
+- Browsing GitHub repos directly (algorandfoundation/puya-ts, algorandfoundation/devportal-code-examples)
+- Using CLI commands for all deployment and testing
+
+### Localnet Connection Errors
+
+If localnet commands fail with "network unreachable" or connection errors:
+
+1. **Start localnet**: `algokit localnet start`
+2. **Verify it's running**: `algokit localnet status`
+3. **Reset if needed**: `algokit localnet reset`
+
+## Plan Mode
+
+- Make the plan extremely concise. Sacrifice grammar for the sake of concision.
+- At the end of each plan, give me a list of unresolved questions to answer, if any.
+
+## X402 Development
+
+x402 is an HTTP-native payment protocol built on the HTTP 402 "Payment Required" status code. Three components work together: **Client** requests a protected resource, **Server** responds with 402 and structured payment requirements, and **Facilitator** verifies and settles the payment on-chain. The client signs a transaction, retries the request with a `PAYMENT-SIGNATURE` header, and the server forwards it to the facilitator for verification and settlement before granting access.
+
+### Payment Flow
+
+```
+Client                  Resource Server           Facilitator           Algorand
+  |                          |                        |                    |
+  | 1. GET /api/data         |                        |                    |
+  |------------------------->|                        |                    |
+  | 2. 402 + requirements    |                        |                    |
+  |<-------------------------|                        |                    |
+  | 3. Build + sign txn      |                        |                    |
+  | 4. GET + PAYMENT-SIGNATURE|                      |                    |
+  |------------------------->| 5. verify(payload)     |                    |
+  |                          |----------------------->| 6. simulate_group  |
+  |                          |                        |------------------->|
+  |                          |                        |<-------------------|
+  |                          |<-----------------------| {isValid: true}    |
+  |                          | 7. settle(payload)     |                    |
+  |                          |----------------------->| 8. sign + send     |
+  |                          |                        |------------------->|
+  |                          |                        |<-------------------| txId
+  |                          |<-----------------------|                    |
+  | 9. 200 + data            |                        |                    |
+  |<-------------------------|                        |                    |
 ```
 
-</commands>
+### Building X402 Applications
 
-<troubleshooting>
+1. **Pick language**: TypeScript or Python
+2. **Load the skill**: `algorand-x402-typescript` or `algorand-x402-python`
+3. **Choose components**: Client, server, facilitator, paywall — or a subset
+4. **Follow the skill's SKILL.md** router to find reference files for your component
 
-## Quick Troubleshooting
+The skills contain everything needed: CAIP-2 network identifiers, package lists, signer protocols, environment variables, common errors, and complete code examples.
 
-| Problem | Solution |
-|---------|----------|
-| MCP tools unavailable | Check `.mcp.json` exists, restart agent |
-| Localnet errors | `algokit localnet reset` |
-| Transaction failures | Use `indexer_lookup_application_logs` |
-| Puya compiler errors | Load `algorand-typescript` skill |
-
-</troubleshooting>
+**Public facilitator URL:** `https://facilitator.goplausible.xyz`

@@ -52,6 +52,11 @@ export class EscrowContract extends Contract {
   }
 
   @abimethod({ allowActions: 'NoOp' })
+  public updateStatus(newStatus: uint64): void {
+    assert(false, 'updateStatus is deprecated and should not be used');
+  }
+
+  @abimethod({ allowActions: 'NoOp' })
   public releaseFunds(): void {
     assert(Txn.sender === this.agent.value, 'Only agent can release')
     assert(this.status.value === STATUS_COMPLETED, 'Service not confirmed')
@@ -62,6 +67,7 @@ export class EscrowContract extends Contract {
       fee: Uint64(0),
     }).submit()
 
+    // Ensure status is updated only after successful payment
     this.status.value = STATUS_COMPLETED
   }
 
@@ -106,11 +112,5 @@ export class EscrowContract extends Contract {
   @abimethod({ allowActions: 'NoOp', readonly: true })
   public getStatus(): uint64 {
     return this.status.value
-  }
-
-  @abimethod({ allowActions: 'NoOp' })
-  public updateStatus(newStatus: uint64): void {
-    assert(Txn.sender === this.agent.value || Txn.sender === this.provider.value, 'Unauthorized')
-    this.status.value = newStatus
   }
 }

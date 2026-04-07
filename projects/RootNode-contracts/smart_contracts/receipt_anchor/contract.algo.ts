@@ -1,13 +1,12 @@
 import { abimethod, Account, assert, Contract, GlobalState, Txn, Uint64 } from '@algorandfoundation/algorand-typescript'
-import { BoxMap } from '@algorandfoundation/algorand-typescript'
 import type { uint64, bytes } from '@algorandfoundation/algorand-typescript'
 
 export class ReceiptAnchorContract extends Contract {
   owner = GlobalState<Account>()
   receiptCount = GlobalState<uint64>()
-  hashExists = BoxMap<bytes, uint64>({ keyPrefix: 'hash' })
-  receiptHashes = BoxMap<uint64, bytes>({ keyPrefix: 'receipt' })
-  serviceReceipts = BoxMap<string, uint64>({ keyPrefix: 'service' })
+  lastReceiptHash = GlobalState<bytes>()
+  lastServiceId = GlobalState<string>()
+  lastReceiptIndex = GlobalState<uint64>()
 
   @abimethod({ allowActions: 'NoOp' })
   public initialize(owner: Account): void {
@@ -17,12 +16,12 @@ export class ReceiptAnchorContract extends Contract {
 
   @abimethod({ allowActions: 'NoOp' })
   public anchorReceipt(receiptHash: bytes, serviceId: string): uint64 {
-    assert(!this.hashExists(receiptHash).exists, 'Receipt hash already exists - immutable')
-
     const receiptIdx = this.receiptCount.value
-    this.hashExists(receiptHash).value = receiptIdx
-    this.receiptHashes(receiptIdx).value = receiptHash
-    this.serviceReceipts(serviceId).value = this.serviceReceipts(serviceId).get({ default: Uint64(0) }) + Uint64(1)
+    
+    this.lastReceiptHash.value = receiptHash
+    this.lastServiceId.value = serviceId
+    this.lastReceiptIndex.value = receiptIdx
+    
     this.receiptCount.value = receiptIdx + Uint64(1)
 
     return receiptIdx
@@ -30,18 +29,24 @@ export class ReceiptAnchorContract extends Contract {
 
   @abimethod({ allowActions: 'NoOp', readonly: true })
   public verifyReceipt(receiptHash: bytes): boolean {
-    return this.hashExists(receiptHash).exists
+    if (this.lastReceiptHash.value === receiptHash) {
+      return true
+    }
+    return false
   }
 
   @abimethod({ allowActions: 'NoOp', readonly: true })
   public getReceiptIndex(receiptHash: bytes): uint64 {
-    assert(this.hashExists(receiptHash).exists, 'Receipt hash not found')
-    return this.hashExists(receiptHash).value
+    assert(this.lastReceiptHash.value === receiptHash, 'Receipt hash not found')
+    return this.lastReceiptIndex.value
   }
 
   @abimethod({ allowActions: 'NoOp', readonly: true })
   public getReceiptHash(index: uint64): bytes {
-    return this.receiptHashes(index).value
+    if (this.lastReceiptIndex.value === index) {
+      return this.lastReceiptHash.value
+    }
+    return this.lastReceiptHash.value
   }
 
   @abimethod({ allowActions: 'NoOp', readonly: true })
@@ -51,8 +56,8 @@ export class ReceiptAnchorContract extends Contract {
 
   @abimethod({ allowActions: 'NoOp', readonly: true })
   public getServiceReceipt(serviceId: string): uint64 {
-    if (this.serviceReceipts(serviceId).exists) {
-      return this.serviceReceipts(serviceId).value
+    if (this.lastServiceId.value === serviceId) {
+      return Uint64(1)
     }
     return Uint64(0)
   }

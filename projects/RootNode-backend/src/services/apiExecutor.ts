@@ -128,6 +128,7 @@ export async function callProviderApi(service: Service, timeoutMs?: number): Pro
             data: mockData,
             responseTime,
             fallback: true,
+            txId: 'FALLBACK_' + Date.now() + '_' + Math.random().toString(36).substr(2, 8).toUpperCase(),
           };
         }
         

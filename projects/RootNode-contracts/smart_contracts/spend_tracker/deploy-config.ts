@@ -20,6 +20,13 @@ export async function deploy() {
   })
 
   if (['create', 'replace'].includes(result.operationPerformed)) {
+    console.log('Initializing SpendTrackerContract...')
+    await appClient.send.initialize({
+      args: {
+        owner: deployer.addr,
+      },
+    })
+    
     await algorand.send.payment({
       amount: (0.1).algo(),
       sender: deployer.addr,

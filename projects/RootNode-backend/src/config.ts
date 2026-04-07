@@ -56,7 +56,7 @@ const config: Config = {
 
   gemini: {
     apiKey: process.env.GEMINI_API_KEY || '',
-    model: process.env.GEMINI_MODEL || 'gemini-pro',
+    model: process.env.GEMINI_MODEL || 'gemini-2.0-flash',
   },
 
   server: {
@@ -78,7 +78,7 @@ const config: Config = {
 
   contracts: {
     policy_contract: {
-      app_id: 1008,
+      app_id: 1065,
       status: 'deployed',
       blocks_count: 0,
     },
@@ -88,12 +88,12 @@ const config: Config = {
       refunds_count: 0,
     },
     receipt_anchor: {
-      app_id: 1011,
+      app_id: 1063,
       status: 'deployed',
       hashes_count: 0,
     },
     spend_tracker: {
-      app_id: 1015,
+      app_id: 1061,
       status: 'deployed',
       transactions_count: 0,
     },

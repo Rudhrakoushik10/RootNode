@@ -4,8 +4,8 @@
 // @algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram() -> uint64:
 main:
     intcblock 0 1 2
-    bytecblock 0x151f7c75 "receiptCount" "hash" "owner" "receipt" "service"
-    // smart_contracts/receipt_anchor/contract.algo.ts:5
+    bytecblock 0x151f7c75 "receiptCount" "lastReceiptHash" "lastReceiptIndex" "owner" "lastServiceId"
+    // smart_contracts/receipt_anchor/contract.algo.ts:4
     // export class ReceiptAnchorContract extends Contract {
     txn NumAppArgs
     bz main___algots__.defaultCreate@15
@@ -20,7 +20,7 @@ main:
     err
 
 main___algots__.defaultCreate@15:
-    // smart_contracts/receipt_anchor/contract.algo.ts:5
+    // smart_contracts/receipt_anchor/contract.algo.ts:4
     // export class ReceiptAnchorContract extends Contract {
     txn OnCompletion
     !
@@ -34,7 +34,7 @@ main___algots__.defaultCreate@15:
 
 // smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.initialize[routing]() -> void:
 initialize:
-    // smart_contracts/receipt_anchor/contract.algo.ts:12
+    // smart_contracts/receipt_anchor/contract.algo.ts:11
     // @abimethod({ allowActions: 'NoOp' })
     txna ApplicationArgs 1
     dup
@@ -42,21 +42,21 @@ initialize:
     pushint 32 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
-    // smart_contracts/receipt_anchor/contract.algo.ts:6
+    // smart_contracts/receipt_anchor/contract.algo.ts:5
     // owner = GlobalState<Account>()
-    bytec_3 // "owner"
-    // smart_contracts/receipt_anchor/contract.algo.ts:14
+    bytec 4 // "owner"
+    // smart_contracts/receipt_anchor/contract.algo.ts:13
     // this.owner.value = owner
     swap
     app_global_put
-    // smart_contracts/receipt_anchor/contract.algo.ts:7
+    // smart_contracts/receipt_anchor/contract.algo.ts:6
     // receiptCount = GlobalState<uint64>()
     bytec_1 // "receiptCount"
-    // smart_contracts/receipt_anchor/contract.algo.ts:15
+    // smart_contracts/receipt_anchor/contract.algo.ts:14
     // this.receiptCount.value = Uint64(0)
     intc_0 // 0
     app_global_put
-    // smart_contracts/receipt_anchor/contract.algo.ts:12
+    // smart_contracts/receipt_anchor/contract.algo.ts:11
     // @abimethod({ allowActions: 'NoOp' })
     intc_1 // 1
     return
@@ -64,7 +64,7 @@ initialize:
 
 // smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.anchorReceipt[routing]() -> void:
 anchorReceipt:
-    // smart_contracts/receipt_anchor/contract.algo.ts:18
+    // smart_contracts/receipt_anchor/contract.algo.ts:17
     // @abimethod({ allowActions: 'NoOp' })
     txna ApplicationArgs 1
     dup
@@ -88,80 +88,52 @@ anchorReceipt:
     ==
     assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
     extract 2 0
-    // smart_contracts/receipt_anchor/contract.algo.ts:8
-    // hashExists = BoxMap<bytes, uint64>({ keyPrefix: 'hash' })
-    bytec_2 // "hash"
-    dig 2
-    concat
-    // smart_contracts/receipt_anchor/contract.algo.ts:20
-    // assert(!this.hashExists(receiptHash).exists, 'Receipt hash already exists - immutable')
-    dup
-    box_len
-    bury 1
-    !
-    assert // Receipt hash already exists - immutable
-    // smart_contracts/receipt_anchor/contract.algo.ts:22
+    // smart_contracts/receipt_anchor/contract.algo.ts:19
     // const receiptIdx = this.receiptCount.value
     intc_0 // 0
-    // smart_contracts/receipt_anchor/contract.algo.ts:7
+    // smart_contracts/receipt_anchor/contract.algo.ts:6
     // receiptCount = GlobalState<uint64>()
     bytec_1 // "receiptCount"
-    // smart_contracts/receipt_anchor/contract.algo.ts:22
+    // smart_contracts/receipt_anchor/contract.algo.ts:19
     // const receiptIdx = this.receiptCount.value
     app_global_get_ex
     assert // check GlobalState exists
-    // smart_contracts/receipt_anchor/contract.algo.ts:23
-    // this.hashExists(receiptHash).value = receiptIdx
-    dup
-    itob
-    uncover 2
-    dig 1
-    box_put
-    // smart_contracts/receipt_anchor/contract.algo.ts:9
-    // receiptHashes = BoxMap<uint64, bytes>({ keyPrefix: 'receipt' })
-    bytec 4 // "receipt"
-    dig 1
-    concat
-    // smart_contracts/receipt_anchor/contract.algo.ts:24
-    // this.receiptHashes(receiptIdx).value = receiptHash
-    dup
-    box_del
-    pop
-    uncover 4
-    box_put
-    // smart_contracts/receipt_anchor/contract.algo.ts:10
-    // serviceReceipts = BoxMap<string, uint64>({ keyPrefix: 'service' })
-    bytec 5 // "service"
-    uncover 3
-    concat
-    // smart_contracts/receipt_anchor/contract.algo.ts:25
-    // this.serviceReceipts(serviceId).value = this.serviceReceipts(serviceId).get({ default: Uint64(0) }) + Uint64(1)
-    dup
-    box_get
-    swap
-    btoi
-    intc_0 // 0
-    swap
-    uncover 2
-    select
-    intc_1 // 1
-    +
-    itob
-    box_put
-    // smart_contracts/receipt_anchor/contract.algo.ts:26
-    // this.receiptCount.value = receiptIdx + Uint64(1)
-    swap
-    intc_1 // 1
-    +
     // smart_contracts/receipt_anchor/contract.algo.ts:7
+    // lastReceiptHash = GlobalState<bytes>()
+    bytec_2 // "lastReceiptHash"
+    // smart_contracts/receipt_anchor/contract.algo.ts:21
+    // this.lastReceiptHash.value = receiptHash
+    uncover 3
+    app_global_put
+    // smart_contracts/receipt_anchor/contract.algo.ts:8
+    // lastServiceId = GlobalState<string>()
+    bytec 5 // "lastServiceId"
+    // smart_contracts/receipt_anchor/contract.algo.ts:22
+    // this.lastServiceId.value = serviceId
+    uncover 2
+    app_global_put
+    // smart_contracts/receipt_anchor/contract.algo.ts:9
+    // lastReceiptIndex = GlobalState<uint64>()
+    bytec_3 // "lastReceiptIndex"
+    // smart_contracts/receipt_anchor/contract.algo.ts:23
+    // this.lastReceiptIndex.value = receiptIdx
+    dig 1
+    app_global_put
+    // smart_contracts/receipt_anchor/contract.algo.ts:25
+    // this.receiptCount.value = receiptIdx + Uint64(1)
+    dup
+    intc_1 // 1
+    +
+    // smart_contracts/receipt_anchor/contract.algo.ts:6
     // receiptCount = GlobalState<uint64>()
     bytec_1 // "receiptCount"
-    // smart_contracts/receipt_anchor/contract.algo.ts:26
+    // smart_contracts/receipt_anchor/contract.algo.ts:25
     // this.receiptCount.value = receiptIdx + Uint64(1)
     swap
     app_global_put
-    // smart_contracts/receipt_anchor/contract.algo.ts:18
+    // smart_contracts/receipt_anchor/contract.algo.ts:17
     // @abimethod({ allowActions: 'NoOp' })
+    itob
     bytec_0 // 0x151f7c75
     swap
     concat
@@ -172,7 +144,7 @@ anchorReceipt:
 
 // smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.verifyReceipt[routing]() -> void:
 verifyReceipt:
-    // smart_contracts/receipt_anchor/contract.algo.ts:31
+    // smart_contracts/receipt_anchor/contract.algo.ts:30
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     txna ApplicationArgs 1
     dup
@@ -185,16 +157,24 @@ verifyReceipt:
     ==
     assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
     extract 2 0
-    // smart_contracts/receipt_anchor/contract.algo.ts:8
-    // hashExists = BoxMap<bytes, uint64>({ keyPrefix: 'hash' })
-    bytec_2 // "hash"
-    swap
-    concat
+    // smart_contracts/receipt_anchor/contract.algo.ts:32
+    // if (this.lastReceiptHash.value === receiptHash) {
+    intc_0 // 0
+    // smart_contracts/receipt_anchor/contract.algo.ts:7
+    // lastReceiptHash = GlobalState<bytes>()
+    bytec_2 // "lastReceiptHash"
+    // smart_contracts/receipt_anchor/contract.algo.ts:32
+    // if (this.lastReceiptHash.value === receiptHash) {
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    bz verifyReceipt_after_if_else@3
     // smart_contracts/receipt_anchor/contract.algo.ts:33
-    // return this.hashExists(receiptHash).exists
-    box_len
-    bury 1
-    // smart_contracts/receipt_anchor/contract.algo.ts:31
+    // return true
+    intc_1 // 1
+
+verifyReceipt_after_inlined_smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.verifyReceipt@4:
+    // smart_contracts/receipt_anchor/contract.algo.ts:30
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     pushbytes 0x00
     intc_0 // 0
@@ -207,10 +187,18 @@ verifyReceipt:
     intc_1 // 1
     return
 
+verifyReceipt_after_if_else@3:
+    // smart_contracts/receipt_anchor/contract.algo.ts:35
+    // return false
+    intc_0 // 0
+    // smart_contracts/receipt_anchor/contract.algo.ts:30
+    // @abimethod({ allowActions: 'NoOp', readonly: true })
+    b verifyReceipt_after_inlined_smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.verifyReceipt@4
+
 
 // smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getReceiptIndex[routing]() -> void:
 getReceiptIndex:
-    // smart_contracts/receipt_anchor/contract.algo.ts:36
+    // smart_contracts/receipt_anchor/contract.algo.ts:38
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     txna ApplicationArgs 1
     dup
@@ -223,23 +211,29 @@ getReceiptIndex:
     ==
     assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
     extract 2 0
-    // smart_contracts/receipt_anchor/contract.algo.ts:8
-    // hashExists = BoxMap<bytes, uint64>({ keyPrefix: 'hash' })
-    bytec_2 // "hash"
-    swap
-    concat
-    // smart_contracts/receipt_anchor/contract.algo.ts:38
-    // assert(this.hashExists(receiptHash).exists, 'Receipt hash not found')
-    dup
-    box_len
-    bury 1
+    // smart_contracts/receipt_anchor/contract.algo.ts:40
+    // assert(this.lastReceiptHash.value === receiptHash, 'Receipt hash not found')
+    intc_0 // 0
+    // smart_contracts/receipt_anchor/contract.algo.ts:7
+    // lastReceiptHash = GlobalState<bytes>()
+    bytec_2 // "lastReceiptHash"
+    // smart_contracts/receipt_anchor/contract.algo.ts:40
+    // assert(this.lastReceiptHash.value === receiptHash, 'Receipt hash not found')
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
     assert // Receipt hash not found
-    // smart_contracts/receipt_anchor/contract.algo.ts:39
-    // return this.hashExists(receiptHash).value
-    box_get
-    pop
-    btoi
-    // smart_contracts/receipt_anchor/contract.algo.ts:36
+    // smart_contracts/receipt_anchor/contract.algo.ts:41
+    // return this.lastReceiptIndex.value
+    intc_0 // 0
+    // smart_contracts/receipt_anchor/contract.algo.ts:9
+    // lastReceiptIndex = GlobalState<uint64>()
+    bytec_3 // "lastReceiptIndex"
+    // smart_contracts/receipt_anchor/contract.algo.ts:41
+    // return this.lastReceiptIndex.value
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/receipt_anchor/contract.algo.ts:38
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     itob
     bytec_0 // 0x151f7c75
@@ -252,7 +246,7 @@ getReceiptIndex:
 
 // smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getReceiptHash[routing]() -> void:
 getReceiptHash:
-    // smart_contracts/receipt_anchor/contract.algo.ts:42
+    // smart_contracts/receipt_anchor/contract.algo.ts:44
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     txna ApplicationArgs 1
     dup
@@ -261,19 +255,31 @@ getReceiptHash:
     ==
     assert // invalid number of bytes for arc4.uint64
     btoi
-    // smart_contracts/receipt_anchor/contract.algo.ts:44
-    // return this.receiptHashes(index).value
-    itob
+    // smart_contracts/receipt_anchor/contract.algo.ts:46
+    // if (this.lastReceiptIndex.value === index) {
+    intc_0 // 0
     // smart_contracts/receipt_anchor/contract.algo.ts:9
-    // receiptHashes = BoxMap<uint64, bytes>({ keyPrefix: 'receipt' })
-    bytec 4 // "receipt"
-    swap
-    concat
+    // lastReceiptIndex = GlobalState<uint64>()
+    bytec_3 // "lastReceiptIndex"
+    // smart_contracts/receipt_anchor/contract.algo.ts:46
+    // if (this.lastReceiptIndex.value === index) {
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    bz getReceiptHash_after_if_else@3
+    // smart_contracts/receipt_anchor/contract.algo.ts:47
+    // return this.lastReceiptHash.value
+    intc_0 // 0
+    // smart_contracts/receipt_anchor/contract.algo.ts:7
+    // lastReceiptHash = GlobalState<bytes>()
+    bytec_2 // "lastReceiptHash"
+    // smart_contracts/receipt_anchor/contract.algo.ts:47
+    // return this.lastReceiptHash.value
+    app_global_get_ex
+    assert // check GlobalState exists
+
+getReceiptHash_after_inlined_smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getReceiptHash@4:
     // smart_contracts/receipt_anchor/contract.algo.ts:44
-    // return this.receiptHashes(index).value
-    box_get
-    assert // Box must have value
-    // smart_contracts/receipt_anchor/contract.algo.ts:42
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     dup
     len
@@ -288,20 +294,35 @@ getReceiptHash:
     intc_1 // 1
     return
 
+getReceiptHash_after_if_else@3:
+    // smart_contracts/receipt_anchor/contract.algo.ts:49
+    // return this.lastReceiptHash.value
+    intc_0 // 0
+    // smart_contracts/receipt_anchor/contract.algo.ts:7
+    // lastReceiptHash = GlobalState<bytes>()
+    bytec_2 // "lastReceiptHash"
+    // smart_contracts/receipt_anchor/contract.algo.ts:49
+    // return this.lastReceiptHash.value
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/receipt_anchor/contract.algo.ts:44
+    // @abimethod({ allowActions: 'NoOp', readonly: true })
+    b getReceiptHash_after_inlined_smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getReceiptHash@4
+
 
 // smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getTotalReceipts[routing]() -> void:
 getTotalReceipts:
-    // smart_contracts/receipt_anchor/contract.algo.ts:49
+    // smart_contracts/receipt_anchor/contract.algo.ts:54
     // return this.receiptCount.value
     intc_0 // 0
-    // smart_contracts/receipt_anchor/contract.algo.ts:7
+    // smart_contracts/receipt_anchor/contract.algo.ts:6
     // receiptCount = GlobalState<uint64>()
     bytec_1 // "receiptCount"
-    // smart_contracts/receipt_anchor/contract.algo.ts:49
+    // smart_contracts/receipt_anchor/contract.algo.ts:54
     // return this.receiptCount.value
     app_global_get_ex
     assert // check GlobalState exists
-    // smart_contracts/receipt_anchor/contract.algo.ts:47
+    // smart_contracts/receipt_anchor/contract.algo.ts:52
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     itob
     bytec_0 // 0x151f7c75
@@ -314,7 +335,7 @@ getTotalReceipts:
 
 // smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getServiceReceipt[routing]() -> void:
 getServiceReceipt:
-    // smart_contracts/receipt_anchor/contract.algo.ts:52
+    // smart_contracts/receipt_anchor/contract.algo.ts:57
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     txna ApplicationArgs 1
     dup
@@ -327,26 +348,24 @@ getServiceReceipt:
     ==
     assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
     extract 2 0
-    // smart_contracts/receipt_anchor/contract.algo.ts:10
-    // serviceReceipts = BoxMap<string, uint64>({ keyPrefix: 'service' })
-    bytec 5 // "service"
-    swap
-    concat
-    dup
-    // smart_contracts/receipt_anchor/contract.algo.ts:54
-    // if (this.serviceReceipts(serviceId).exists) {
-    box_len
-    bury 1
+    // smart_contracts/receipt_anchor/contract.algo.ts:59
+    // if (this.lastServiceId.value === serviceId) {
+    intc_0 // 0
+    // smart_contracts/receipt_anchor/contract.algo.ts:8
+    // lastServiceId = GlobalState<string>()
+    bytec 5 // "lastServiceId"
+    // smart_contracts/receipt_anchor/contract.algo.ts:59
+    // if (this.lastServiceId.value === serviceId) {
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
     bz getServiceReceipt_after_if_else@3
-    // smart_contracts/receipt_anchor/contract.algo.ts:55
-    // return this.serviceReceipts(serviceId).value
-    dup
-    box_get
-    assert // Box must have value
-    btoi
+    // smart_contracts/receipt_anchor/contract.algo.ts:60
+    // return Uint64(1)
+    intc_1 // 1
 
 getServiceReceipt_after_inlined_smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getServiceReceipt@4:
-    // smart_contracts/receipt_anchor/contract.algo.ts:52
+    // smart_contracts/receipt_anchor/contract.algo.ts:57
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     itob
     bytec_0 // 0x151f7c75
@@ -357,37 +376,37 @@ getServiceReceipt_after_inlined_smart_contracts/receipt_anchor/contract.algo.ts:
     return
 
 getServiceReceipt_after_if_else@3:
-    // smart_contracts/receipt_anchor/contract.algo.ts:57
+    // smart_contracts/receipt_anchor/contract.algo.ts:62
     // return Uint64(0)
     intc_0 // 0
-    // smart_contracts/receipt_anchor/contract.algo.ts:52
+    // smart_contracts/receipt_anchor/contract.algo.ts:57
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     b getServiceReceipt_after_inlined_smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getServiceReceipt@4
 
 
 // smart_contracts/receipt_anchor/contract.algo.ts::ReceiptAnchorContract.getContractInfo[routing]() -> void:
 getContractInfo:
-    // smart_contracts/receipt_anchor/contract.algo.ts:62
+    // smart_contracts/receipt_anchor/contract.algo.ts:67
     // return [this.owner.value, this.receiptCount.value]
     intc_0 // 0
-    // smart_contracts/receipt_anchor/contract.algo.ts:6
+    // smart_contracts/receipt_anchor/contract.algo.ts:5
     // owner = GlobalState<Account>()
-    bytec_3 // "owner"
-    // smart_contracts/receipt_anchor/contract.algo.ts:62
+    bytec 4 // "owner"
+    // smart_contracts/receipt_anchor/contract.algo.ts:67
     // return [this.owner.value, this.receiptCount.value]
     app_global_get_ex
     assert // check GlobalState exists
     intc_0 // 0
-    // smart_contracts/receipt_anchor/contract.algo.ts:7
+    // smart_contracts/receipt_anchor/contract.algo.ts:6
     // receiptCount = GlobalState<uint64>()
     bytec_1 // "receiptCount"
-    // smart_contracts/receipt_anchor/contract.algo.ts:62
+    // smart_contracts/receipt_anchor/contract.algo.ts:67
     // return [this.owner.value, this.receiptCount.value]
     app_global_get_ex
     assert // check GlobalState exists
     itob
     concat
-    // smart_contracts/receipt_anchor/contract.algo.ts:60
+    // smart_contracts/receipt_anchor/contract.algo.ts:65
     // @abimethod({ allowActions: 'NoOp', readonly: true })
     bytec_0 // 0x151f7c75
     swap

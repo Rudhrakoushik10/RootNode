@@ -1,5 +1,5 @@
 import { 
-  abimethod, Account, assert, Contract, Global, GlobalState, Txn, Uint64
+  abimethod, Account, assert, Contract, GlobalState, Txn, Uint64
 } from '@algorandfoundation/algorand-typescript'
 import { BoxMap } from '@algorandfoundation/algorand-typescript'
 import type { uint64 } from '@algorandfoundation/algorand-typescript'
@@ -26,16 +26,22 @@ export class PolicyContract extends Contract {
   }
 
   @abimethod({ allowActions: 'NoOp' })
+  public createCategoryBox(category: string): void {
+    assert(Txn.sender === this.owner.value, 'Only owner can create boxes')
+    this.categoryWhitelist(category).value = Uint64(0)
+  }
+
+  @abimethod({ allowActions: 'NoOp' })
   public addCategory(category: string): void {
     assert(Txn.sender === this.owner.value, 'Only owner can modify whitelist')
-    assert(!this.categoryWhitelist(category).exists, 'Category already exists')
     this.categoryWhitelist(category).value = Uint64(1)
     this.categoriesUsed.value = this.categoriesUsed.value + Uint64(1)
   }
 
   @abimethod({ allowActions: 'NoOp', readonly: true })
   public isCategoryAllowed(category: string): boolean {
-    return this.categoryWhitelist(category).exists
+    const val = this.categoryWhitelist(category).get({ default: Uint64(0) })
+    return val === Uint64(1)
   }
 
   @abimethod({ allowActions: 'NoOp' })
@@ -60,7 +66,8 @@ export class PolicyContract extends Contract {
       return false
     }
 
-    if (!this.categoryWhitelist(category).exists) {
+    const isAllowed = this.isCategoryAllowed(category)
+    if (!isAllowed) {
       return false
     }
 

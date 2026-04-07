@@ -1,0 +1,6 @@
+const params = {
+  agentAddress: "AZQDVJVYRTAHUO5BA7Z2YXACPFQUNUVNS3TBLSZGMHCHJLBVGYEMR52Q7Y",
+  serviceId: "test_demo_1",
+  amountMicroAlgos: 1000000
+};
+console.log(JSON.stringify(params));

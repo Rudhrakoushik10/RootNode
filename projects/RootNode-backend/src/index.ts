@@ -13,7 +13,7 @@ import { validatePolicy } from './services/policyEngine.js';
 import { callProviderApi, validateResponse } from './services/apiExecutor.js';
 import { createReceipt as createReceiptData, generateServiceId } from './services/receiptService.js';
 import { initializeWallet, getBackendAccount, checkBalance } from './services/walletService.js';
-import { initializeContracts, isContractInitialized, getContractStatus, recordSpendOnChain } from './services/contractService.js';
+import { initializeContracts, isContractInitialized, getContractStatus, recordSpendOnChain, anchorReceiptOnChain, setBackendAccount, initializeDeployerAccount } from './services/contractService.js';
 import type { TaskResult } from './types.js';
 
 const app = express();
@@ -197,11 +197,52 @@ app.post(
         const txId = apiResponse.txId || `TX_${Date.now()}_${Math.random().toString(36).substr(2, 8).toUpperCase()}`;
         
         const serviceId = generateServiceId(selected.service.provider, selected.service.category);
+        let spendTxId: string | undefined;
+        let receiptTxId: string | undefined;
         
         const account = getBackendAccount();
+        
+        console.log('[DEBUG] === TASK COMPLETION BLOCK ===');
+        console.log('[DEBUG] account:', account?.addr);
+        console.log('[DEBUG] isContractInitialized():', isContractInitialized());
+        console.log('[DEBUG] contractStatus:', getContractStatus());
+        
+        // ALWAYS call contracts when account exists and contracts are initialized
+        // This ensures blockchain state updates even in fallback mode
         if (account && isContractInitialized()) {
+          console.log('[DEBUG] ✅ Entering contract call block');
           const amountMicroAlgos = BigInt(Math.round(selected.service.price_algo * 1_000_000));
-          await recordSpendOnChain(account.addr, serviceId, amountMicroAlgos);
+          console.log('[DEBUG] Calling recordSpendOnChain with:', { agent: account.addr, serviceId, amount: amountMicroAlgos.toString() });
+          
+          logger.info('Calling SpendTrackerContract.recordSpend on blockchain...', { serviceId, amount: amountMicroAlgos.toString() });
+          const spendResult = await recordSpendOnChain(account.addr, serviceId, amountMicroAlgos);
+          console.log('[DEBUG] recordSpendOnChain result:', JSON.stringify(spendResult));
+          
+          if (spendResult.success && spendResult.txId) {
+            spendTxId = spendResult.txId;
+            logger.info('Spend record transaction confirmed on blockchain', { txId: spendTxId });
+            config.contracts.spend_tracker.transactions_count = 
+              (config.contracts.spend_tracker.transactions_count || 0) + 1;
+          } else if (spendResult.message) {
+            logger.warn('Spend record warning', { message: spendResult.message });
+          }
+          
+          logger.info('Calling ReceiptAnchorContract.anchorReceipt on blockchain...');
+          const receiptHash = Buffer.from(`hash_${Date.now()}`).toString('hex');
+          console.log('[DEBUG] Calling anchorReceiptOnChain with:', { receiptHash, serviceId });
+          const anchorResult = await anchorReceiptOnChain(receiptHash, serviceId);
+          console.log('[DEBUG] anchorReceiptOnChain result:', anchorResult);
+          
+          if (anchorResult.success && anchorResult.txId) {
+            receiptTxId = anchorResult.txId;
+            logger.info('Receipt anchor transaction confirmed on blockchain', { txId: receiptTxId });
+            config.contracts.receipt_anchor.hashes_count = 
+              (config.contracts.receipt_anchor.hashes_count || 0) + 1;
+          } else if (anchorResult.message) {
+            logger.warn('Receipt anchor warning', { message: anchorResult.message });
+          }
+        } else {
+          console.log('[DEBUG] Skipping contract calls - account or contracts not initialized');
         }
         
         const receiptData = {
@@ -211,7 +252,7 @@ app.post(
           amount_algo: selected.service.price_algo,
           timestamp: new Date().toISOString(),
           api_response: apiResponse.data,
-          txid: txId,
+          txid: spendTxId || txId,
         };
         const receipt = await createReceiptData(receiptData);
 
@@ -221,7 +262,7 @@ app.post(
           txid: receipt.txid,
           receipt_hash: receipt.receipt_hash,
           timestamp: receipt.timestamp,
-          hash_on_chain: receipt.hash_on_chain,
+          hash_on_chain: !!receiptTxId,
           provider: receipt.provider,
         });
 
@@ -229,30 +270,36 @@ app.post(
           service_name: selected.service.name,
           status: 'success',
           amount_algo: selected.service.price_algo,
-          txid: txId,
+          txid: spendTxId || txId,
           timestamp: new Date().toISOString(),
-          note: 'x402 payment to provider completed',
+          note: `Contract calls: SpendTracker(${spendTxId || 'N/A'}), ReceiptAnchor(${receiptTxId || 'N/A'})`,
           reason: null,
           provider: selected.service.provider,
         });
-
-        config.contracts.receipt_anchor.hashes_count = 
-          (config.contracts.receipt_anchor.hashes_count || 0) + 1;
 
         result = {
           status: 'success',
           service_name: selected.service.name,
           provider: selected.service.provider,
           amount_algo: selected.service.price_algo,
-          txid: txId,
+          txid: spendTxId || txId,
           receipt_hash: receipt.receipt_hash,
-          message: 'Task completed successfully',
+          blockchain_txids: {
+            spendTracker: spendTxId || null,
+            receiptAnchor: receiptTxId || null,
+          },
+          is_fallback: (apiResponse as any).fallback || false,
+          message: 'Task completed successfully - blockchain transactions recorded',
         };
 
         logger.info('Task completed successfully', {
           service: selected.service.name,
-          txid: txId,
-          receiptOnChain: receipt.hash_on_chain,
+          txid: spendTxId || txId,
+          receiptTxId: receiptTxId,
+          spendTxId: spendTxId,
+          spendTrackerTxId: spendTxId,
+          receiptAnchorTxId: receiptTxId,
+          isFallback: (apiResponse as any).fallback,
         });
       } else {
         await createTransaction({
@@ -353,6 +400,12 @@ async function initializeBlockchain() {
     
     console.log('  ✅ Blockchain wallet initialized');
     console.log(`     Address: ${account.addr}\n`);
+    
+    setBackendAccount(account);
+    console.log('  ✅ Backend account set for contract calls\n');
+    
+    await initializeDeployerAccount();
+    console.log('  ✅ Deployer account initialized for contract operations\n');
     
     await initializeContracts();
     

@@ -92,6 +92,11 @@ export interface TaskResult {
   txid?: string | null;
   receipt_hash?: string | null;
   message?: string;
+  blockchain_txids?: {
+    spendTracker?: string | null;
+    receiptAnchor?: string | null;
+  };
+  is_fallback?: boolean;
 }
 
 export interface ContractState {

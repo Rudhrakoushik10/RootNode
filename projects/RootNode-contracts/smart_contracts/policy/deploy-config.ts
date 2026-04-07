@@ -26,12 +26,24 @@ export async function deploy() {
       },
     })
     
-    console.log('Funding app account...')
+    console.log('Funding app account for boxes...')
     await algorand.send.payment({
-      amount: (0.1).algo(),
+      amount: (0.2).algo(),
       sender: deployer.addr,
       receiver: appClient.appAddress,
     })
+
+    console.log('Creating category boxes...')
+    for (const category of ['weather', 'medical', 'satellite', 'routing', 'finance']) {
+      try {
+        await appClient.send.createCategoryBox({
+          args: { category },
+        })
+        console.log(`  Created box for: ${category}`)
+      } catch (e) {
+        console.log(`  Failed to create box for ${category}:`, e)
+      }
+    }
 
     console.log('Adding whitelisted categories...')
     for (const category of ['weather', 'medical', 'satellite', 'routing', 'finance']) {

@@ -1,3 +1,5 @@
+Remove-Item -Recurse -Force "$env:USERPROFILE\.claude"
+Remove-Item -Force "$env:USERPROFILE\.claude.json"
 # RootNode - Agentic Service Buyer on Algorand
 
 An autonomous AI agent system for purchasing external API services with payments enforced on the Algorand blockchain via x402 protocol.

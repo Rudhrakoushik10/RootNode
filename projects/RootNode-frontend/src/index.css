@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-
+/* Light Theme (Default) */
 body {
-  @apply bg-[#0f1117] text-[#e2e8f0] font-sans;
+  @apply bg-beige-50 text-olive-dark font-sans;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
 }
@@ -15,16 +16,53 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f1117;
+  background: #FAF8F5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2d3148;
+  background: #D4C9B8;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
+  background: #556B2F;
+}
+
+/* Dark Theme */
+.dark body,
+body.dark {
+  @apply bg-[#1a1d27] text-[#e2e8f0];
+}
+.dark ::-webkit-scrollbar-track,
+body.dark ::-webkit-scrollbar-track {
+  background: #1a1d27;
+}
+.dark ::-webkit-scrollbar-thumb,
+body.dark ::-webkit-scrollbar-thumb {
+  background: #2d3148;
+}
+.dark ::-webkit-scrollbar-thumb:hover,
+body.dark ::-webkit-scrollbar-thumb:hover {
   background: #3b82f6;
 }
 
+/* Theme Toggle Animation */
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Badge Styles */
+.badge {
+  @apply px-2 py-0.5 rounded text-[11px] font-medium uppercase tracking-wider;
+}
+
+.badge-success { @apply bg-olive-light/20 text-olive-dark; }
+.badge-rejected { @apply bg-red-100 text-red-800; }
+.badge-pending { @apply bg-amber-100 text-amber-800; }
+.badge-refunded { @apply bg-orange-100 text-orange-800; }
+.badge-on-chain { @apply bg-blue-100 text-blue-800 border border-blue-200; }
+.badge-active { @apply bg-green-100 text-green-800; }
+.badge-warning { @apply bg-yellow-100 text-yellow-800; }
+
+/* Custom Animations */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
@@ -34,14 +72,39 @@ body {
   animation: pulse 1.5s ease-in-out infinite;
 }
 
-.badge {
-  @apply px-2 py-0.5 rounded text-[11px] font-medium uppercase tracking-wider;
+/* Button Styles for Light Theme */
+.btn-primary {
+  @apply bg-olive text-white hover:bg-olive-dark transition-colors;
 }
 
-.badge-success { background: #14532d; color: #4ade80; }
-.badge-rejected { background: #450a0a; color: #f87171; }
-.badge-pending { background: #1c1917; color: #fb923c; }
-.badge-refunded { background: #431407; color: #fb923c; }
-.badge-on-chain { background: #0c1a35; color: #3b82f6; border: 0.5px solid #1d4ed8; }
-.badge-active { background: #14532d; color: #22c55e; }
-.badge-warning { background: #451a03; color: #fb923c; }
+.btn-secondary {
+  @apply bg-beige-200 text-olive-dark hover:bg-beige-300 transition-colors;
+}
+
+/* Card Styles for Light Theme */
+.card {
+  @apply bg-beige-50 border border-beige-200 rounded-lg;
+}
+
+.dark .card {
+  @apply bg-[#1a1d27] border-[#2d3148];
+}
+
+/* Input Styles */
+input, textarea {
+  @apply bg-beige-50 border border-beige-200 text-olive-dark placeholder-beige-300;
+}
+
+.dark input, 
+.dark textarea {
+  @apply bg-[#1a1d27] border-[#2d3148] text-[#e2e8f0] placeholder-gray-500;
+}
+
+input:focus, textarea:focus {
+  @apply outline-none border-olive;
+}
+
+.dark input:focus, 
+.dark textarea:focus {
+  @apply border-blue-500;
+}
